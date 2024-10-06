@@ -1,8 +1,10 @@
 <template>
-  <h1>Hello</h1>
+  <p class="text-3xl font-semibold underline">
+    Hello world!
+  </p>
 </template>
 <script lang="ts" setup>
-definePageMeta({  
-  layout: 'default' 
+definePageMeta({
+  layout: 'default'
 })
 </script>

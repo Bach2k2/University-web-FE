@@ -14,6 +14,10 @@ export default defineNuxtConfig({
     '@nuxtjs/i18n',
     '@pinia/nuxt',
     '@pinia-plugin-persistedstate/nuxt',
+    '@nuxtjs/tailwindcss',
+    '@nuxtjs/color-mode',
+    '@primevue/nuxt-module',
+    '@element-plus/nuxt',
   ],
 
   pinia: {
@@ -27,5 +31,22 @@ export default defineNuxtConfig({
   build: {
     transpile: ['pinia-plugin-persistedstate'],
   },
+
+  postcss: {
+    plugins: {
+      tailwindcss: {},
+      autoprefixer: {},
+    },
+  },
+
+  colorMode: {
+    preference: 'light',
+  },
+
+  primevue: {
+    options: {
+      unstyled: true
+    }
+  }
 
 })
