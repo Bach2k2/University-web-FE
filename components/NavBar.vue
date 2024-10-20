@@ -92,30 +92,22 @@
     </div>
     <div class="flex flex-col items-center p-8">
         <h2 class="text-2xl font-bold mb-8">Được tìm kiếm nhiều nhất</h2>
-        
-        <div class="w-full md:w-1/2 lg:w-1/3">
-          <el-input
-            v-model="searchQuery"
-            placeholder="Bạn đang tìm gì?"
-            class="rounded-full border border-blue-500"
-            size="large"
-            prefix-icon="el-icon-search"
-            :suffix-icon="SearchIcon"
-          >
-          </el-input>
+
+        <div class="w-full md:w-1/2 lg:w-1/3 flex items-center gap-4">
+            <el-input v-model="searchQuery" placeholder="Bạn đang tìm gì?" size="large" clearable>
+            </el-input>
+            <el-button type="primary" :icon="Search" class="py-2">Search</el-button>
         </div>
-    
+
         <div class="flex flex-wrap justify-center gap-4 mt-6">
-          <el-button
-            v-for="option in searchOptions"
-            :key="option"
-            class="rounded-full border border-blue-900 text-blue-900"
-            type="text"
-          >
-            {{ option }}
-          </el-button>
+            <div class="rounded-full border border-blue-900 px-2" v-for="option in searchOptions" :key="option">
+                <el-button class="text-blue-900" type="text">
+                    {{ option }}
+                </el-button>
+            </div>
+
         </div>
-      </div>
+    </div>
 
     <!-- ====== Hero Section End -->
 
@@ -123,7 +115,7 @@
 <script lang="ts" setup>
 import { onMounted, onUnmounted, ref } from 'vue'
 // import { Carousel, Navigation, Pagination, Slide } from 'vue3-carousel' // ko su dung duoc
-import { Search as SearchIcon } from '@element-plus/icons-vue';
+import { Search } from '@element-plus/icons-vue';
 
 
 const open = ref(false)
@@ -152,9 +144,9 @@ const slides = ref(
 
 const searchQuery = ref('');
 const searchOptions = ref([
-  'Học bổng',
-  'Cơ hội trải nghiệm và việc làm',
-  'Nhập học RMIT'
+    'Học bổng',
+    'Cơ hội trải nghiệm và việc làm',
+    'Nhập học RMIT'
 ]);
 
 // Custom composition function to handle click outside
@@ -176,6 +168,18 @@ onUnmounted(() => {
 </script>
 
 <style scoped>
+.el-input {
+    border-radius: 9999px;
+}
+
+.el-button {
+    padding:8px 20px;
+}
+
+.el-input__wrapper {
+    border-radius: 9999px;
+}
+
 .el-carousel__item h3 {
     display: flex;
     color: #475669;

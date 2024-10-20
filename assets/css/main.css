@@ -1,3 +1,22 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+    h1 {
+      @apply text-4xl font-bold text-header
+    }
+    h2 {
+      @apply text-3xl font-semibold text-header;
+    }
+    h3 {
+      @apply text-2xl font-medium text-header;
+    }
+    h4 {
+      @apply text-xl font-medium text-header;
+    }
+    p{
+       @apply text-base  text-black;
+    }
+  }
+  

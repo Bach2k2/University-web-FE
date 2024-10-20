@@ -1,7 +1,6 @@
 <template>
-  <p class="text-3xl font-semibold underline">
-    Hello world!
-  </p>
+  <HomepageFeatureSection />
+  <HomepageNewsPage/>
 </template>
 <script lang="ts" setup>
 definePageMeta({

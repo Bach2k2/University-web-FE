@@ -1,5 +1,6 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
+  ssr:false,
   compatibilityDate: '2024-04-03',
   devtools: { enabled: true },
 
@@ -9,6 +10,10 @@ export default defineNuxtConfig({
       defaultHost: 'http://localhost:8000'
     }
   },
+  css: [
+    '~/assets/scss/element/index.scss',
+    '~/assets/css/main.css',
+  ],
 
   modules: [
     '@nuxtjs/i18n',
@@ -47,6 +52,10 @@ export default defineNuxtConfig({
     options: {
       unstyled: true
     }
+  },
+
+  elementPlus:{
+    importStyle:"scss"
   }
 
 })
