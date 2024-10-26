@@ -2,7 +2,10 @@
     <div class="main">
         <NavBar/>
         <!-- <TopHeader /> -->
-        <slot />
+         <div class="">
+            <slot />
+         </div>
+        
         <Footer/>
     </div>
 </template>

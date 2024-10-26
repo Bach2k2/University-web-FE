@@ -1,12 +1,12 @@
 <template>
-    <div class="flex box-border mx-auto w-full px-0 min-h-[700px] bg-[#f5f5f5]">
-        <div class="box-content md:w-full sm:w-full px-5">
-            <div class="relative my-4 text-header ">
+    <div class="box-border mx-auto w-full px-0 min-h-[700px] bg-[#f5f5f5]">
+        <div class="flex flex-col box-content md:w-full sm:w-full px-5">
+            <div class="flex-none relative my-4 text-header ">
                 <div class="setionarea__component__content w-[84%] p-8">
-                    <h2 class="text-3xl font-semibold">Tin tức mới nhất</h2>
+                    <h2 class="text-3xl font-semibold">{{$t('Upcoming_events')}}</h2>
                 </div>
             </div>
-            <div class="flex flex-col min-h-[500px]">
+            <div class="flex-auto h-auto min-h-[500px]">
                 <div class="relative block">
                     <div class="relative flex flex-row float-left gap-4">
                         <!-- one column starts -->
@@ -29,8 +29,8 @@
                     </div>
                 </div>
             </div>
-            <div class="mt-2">
-                <button class="bg-header text-slate-100 px-4 py-2 rounded-sm">Xem tất cả tin tức</button>
+            <div class="my-6 flex-auto justify-center self-center lg:mt-12">
+                <button class="bg-header text-slate-100 px-4 py-2 rounded-sm">{{$t('view_all_events')}}</button>
             </div>
         </div>
     </div>
