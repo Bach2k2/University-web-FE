@@ -1,35 +1,38 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-  compatibilityDate: '2024-04-03',
+  ssr: false,
+  compatibilityDate: "2024-04-03",
   devtools: { enabled: true },
 
   runtimeConfig: {
     public: {
-      apiBase: 'http://localhost:8000/api/v1',
-      defaultHost: 'http://localhost:8000'
-    }
+      apiBase: "http://localhost:9004/api/v1",
+      defaultHost: "http://localhost:9000",
+    },
   },
+  css: ["~/assets/scss/element/index.scss", "~/assets/css/main.css"],
 
   modules: [
-    '@nuxtjs/i18n',
-    '@pinia/nuxt',
-    '@pinia-plugin-persistedstate/nuxt',
-    '@nuxtjs/tailwindcss',
-    '@nuxtjs/color-mode',
-    '@primevue/nuxt-module',
-    '@element-plus/nuxt',
+    "@nuxtjs/i18n",
+    "@pinia/nuxt",
+    "@pinia-plugin-persistedstate/nuxt",
+    "@nuxtjs/tailwindcss",
+    "@nuxtjs/color-mode",
+    "@primevue/nuxt-module",
+    "@element-plus/nuxt",
+    "nuxt-svgo",
   ],
 
   pinia: {
-    storesDirs: ['./stores/**', './stores/oauth/**'],
+    storesDirs: ["./stores/**", "./stores/oauth/**"],
   },
 
   piniaPersistedstate: {
-    storage: 'localStorage'
+    storage: "localStorage",
   },
 
   build: {
-    transpile: ['pinia-plugin-persistedstate'],
+    transpile: ["pinia-plugin-persistedstate"],
   },
 
   postcss: {
@@ -40,13 +43,34 @@ export default defineNuxtConfig({
   },
 
   colorMode: {
-    preference: 'light',
+    preference: "light",
   },
 
   primevue: {
     options: {
-      unstyled: true
-    }
-  }
+      unstyled: true,
+    },
+    components: {
+      include: ["*"],
+    },
+  },
 
-})
+  elementPlus: {
+    importStyle: "scss",
+  },
+
+  i18n: {
+    vueI18n: "./localization/i18n.config.ts",
+  },
+
+  svgo: {
+    defaultImport: "component",
+    global: false,
+  },
+
+  lodash: {
+    prefix: "_",
+    prefixSkip: false,
+    upperAfterPrefix: false,
+  },
+});

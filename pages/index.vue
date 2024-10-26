@@ -1,7 +1,8 @@
 <template>
-  <p class="text-3xl font-semibold underline">
-    Hello world!
-  </p>
+  <HomepageHeroSection/>
+  <HomepageFeatureSection />
+  <HomepageNewsPage/>
+  <HomepageEvent/>
 </template>
 <script lang="ts" setup>
 definePageMeta({
