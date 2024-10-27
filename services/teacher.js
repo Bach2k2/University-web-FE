@@ -1,58 +1,25 @@
-import Http from "./http";
+import BaseService from "./base";
+import { shouldFetch, createCachedEntry } from '@/utils/caching';
 
-export default class StudentService {
-  constructor() {
-    if (!this.entity) {
-      throw new Error("Child service class not provide entity");
-    }
+class TeacherService extends BaseService {
+  get entity() {
+    return "plans";
   }
 
-  request() {
-    return new Http('api0');
-  }
-
-  get(id) {
-    return this.request().get(`api0`);
-  }
-
-  create(obj) {
-    return this.request().post(`${this.entity}`, obj);
-  }
-
-  delete(id) {
-    return this.request().delete(`${this.entity}/${id}`);
-  }
-
-  multipleDelete(ids) {
-    return this.request().delete(`/${this.entity}`, { ids });
-  }
-
-  update(obj) {
-    const id = (obj instanceof FormData) ? obj.get("id") : obj.id;
-    return this.request().put(`${this.entity}/${id}`, obj);
-  }
-
-  sync(array) {
-    return this.request().put(`${this.entity}`, array);
-  }
-
-  gets(params = null) {
-    if (params && Object.keys(params).length > 0) {
-      return this.request().get(`${this.entity}`, params);
-    }
-    return this.request().get(`${this.entity}`);
-  }
-
-  tree(params) {
-    if (params) {
-      return this.request().get(`${this.entity}/tree`,
-        params,
-      );
-    }
-    return this.request().get(`${this.entity}/tree`);
-  }
-
-  import(data) {
-    return this.request().post(`${this.entity}/import`, data);
-  }
+  // async fetch(force=false) {
+  //   const store = usePlansStore();
+  //   if(force || shouldFetch(store.plans)) {
+  //     store.setPlans({ ...store.plans, fetching: true });
+  //     try {
+  //       const response = await this.gets();
+  //       const plans = createCachedEntry(response);
+  //       store.setPlans(plans);
+  //     } catch (error) {
+  //       store.setPlans({ ...store.plans, fetching: false });
+  //       throw error;
+  //     }
+  //   }     
+  // }
 }
+
+export default new TeacherService();

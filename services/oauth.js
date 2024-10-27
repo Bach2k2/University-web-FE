@@ -1,40 +1,47 @@
 import BaseService from "./base";
-import { useOauthStore } from '@/stores/oauth'
+import { useOauthStore } from "@/stores/oauth";
 // import { shouldFetch, createCachedEntry } from '@/utils/caching';
 
 class OAuthService extends BaseService {
   get entity() {
-    return "oauth";
+    return "auth/v1/oauth";
   }
 
-  login({username, password}) {
+  login({ username, password }) {
     const formData = new FormData();
     formData.append("username", username);
     formData.append("password", password);
-    console.log("u",username);
-    
-    return this.request().post(`/login`, formData)
-    .then( response => {
-      const { access_token, refresh_token } = response;
-          if(access_token && refresh_token) {
-              const store = useOauthStore();
-              store.setTokenInfo({
-                access_token,
-                refresh_token
-              });
+    console.log("u", username);
 
-              // return this.userinfo()
-              //   .then(account => {
-              //       store.setAccount(account)
-              //   });
-          }
-    });
+    return this.request()
+      .post(`${this.entity}/login`, formData)
+      .then((response) => {
+        console.log(response);
+        const { access_token, refresh_token } = response;
+        if (access_token && refresh_token) {
+          const store = useOauthStore();
+          store.setTokenInfo({
+            access_token,
+            refresh_token,
+          });
+
+          // return this.userinfo()
+          //   .then(account => {
+          //       store.setAccount(account)
+          //   });
+          return 'login success'
+        }
+      })
+      .catch((err) => {
+        console.log('err.data',err.data);
+        return err.data
+      });
   }
 
   logout() {
     const store = useOauthStore();
-    const {tokenInfo} = store;
-    const {access_token, refresh_token} = tokenInfo;
+    const { tokenInfo } = store;
+    const { access_token, refresh_token } = tokenInfo;
     const formData = new FormData();
     formData.append("access_token", access_token);
     formData.append("refresh_token", refresh_token);
@@ -65,7 +72,7 @@ class OAuthService extends BaseService {
   //       store.setDefaultScopes({ ...store.default_scopes, fetching: false });
   //       throw error;
   //     }
-  //   }     
+  //   }
   // }
 }
 

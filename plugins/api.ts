@@ -20,7 +20,8 @@ export default defineNuxtPlugin(() => {
         language = null;
       }
       const authenticationEnpoint = request.endsWith("/login");
-
+      console.log("có access_token:", access_token);
+      
       // Update headers
       if (access_token || language) {
         const headers = (options.headers ||= {});
@@ -55,7 +56,7 @@ export default defineNuxtPlugin(() => {
         if (refresh_token && refresh_token.trim() !== "") {
           const formData = new FormData();
           formData.append("refresh_token", refresh_token);
-          const refreshTokenUrl = `${runtimeConfig.public.apiBase}/administrators/refresh-token`;
+          const refreshTokenUrl = `${runtimeConfig.public.apiBase}/auth/v1/oauth/refresh-token`;
           $fetch(refreshTokenUrl, {
             method: "POST",
             body: formData,
@@ -78,6 +79,8 @@ export default defineNuxtPlugin(() => {
       baseURL: apiBaseUrl,
       onRequest({ request, options }) {
         const tokenInfo = oauthStore ? oauthStore.tokenInfo : null;
+        console.log('here: ',tokenInfo);
+        
         let access_token = tokenInfo ? tokenInfo.access_token.trim() : null;
         if (access_token && access_token.trim() === "") {
           access_token = null;

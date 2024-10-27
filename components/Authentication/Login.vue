@@ -20,13 +20,13 @@
                     </el-form-item>
                     <NuxtLink to="/forgot-password" class="text-primary">{{ $t('forgot_password') }}</NuxtLink>
                 </div>
-                <div class="mt-2 flex flex-row items-center justify-center self-center">
-                    <el-button class="py-2 px-4" @click="login()">
+                <div class="mt-2 flex flex-row items-center justify-center self-center m-0 p-0">
+                    <el-button class="py-2 px-4 login-form-btn items-center" @click="login()">
                         Sign in
                     </el-button>
                 </div>
             </el-form>
-            <div class="login-method-container login-class">
+            <!-- <div class="login-method-container login-class">
                 <div class="sso-method-block">
                     <div class="sso-title">
                         <div class="sso-title-line"></div>
@@ -39,7 +39,7 @@
                         <div class="sso-method-item" method="Microsoft" title="Microsoft"></div>
                     </div>
                 </div>
-            </div>
+            </div> -->
 
         </div>
     </div>
@@ -113,6 +113,25 @@ const clearError = () => {
 };
 </script>
 <style lang="css" scoped>
+.container-login {
+    width: 100%;
+    min-height: 100vh;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    padding: 15px;
+    background-image: url('https://images.pexels.com/photos/206359/pexels-photo-206359.jpeg?cs=srgb&dl=pexels-pixabay-206359.jpg&fm=jpg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    position: relative;
+    z-index: 1;
+}
 .wrap-login {
     width: 400px;
     border-radius: 8px;
@@ -140,5 +159,46 @@ const clearError = () => {
     width: 100%;
     position: relative;
     margin-bottom: 12px;
+}
+.login-form-btn {
+    position: relative;
+    width: 100%;
+    font-size: 16px;
+    color: #fff;
+    line-height: 40px;
+    font-weight: 500;
+    text-align: center;
+    cursor: pointer;
+    height: 40px;
+    border-radius: 4px;
+    background: #0073e6;
+    transition: all .4s;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+}
+
+.sso-title {
+    display: inline-flex;
+    align-items: center;
+    justify-items: center;
+    height: 28px;
+    width: 100%;
+    margin-bottom: 16px;
+}
+.sso-title-line {
+    height: 1px;
+    flex: 1;
+    background-color: #9ea1a5;
+}
+.sso-title-text {
+    padding: 5px 10px;
+    background-color: #fff;
+    color: #9ea1a5;
+    font-size: 14px;
+}
+
+.sso-method-item[method=Google] {
+    background-image: url('@/assets/icons/google-icon-logo.svg');
 }
 </style>

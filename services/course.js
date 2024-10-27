@@ -1,9 +1,9 @@
 import BaseService from "./base";
-import { shouldFetch, createCachedEntry } from '@/utils/caching';
+// import { shouldFetch, createCachedEntry } from '@/utils/caching';
 
-class StudentService extends BaseService {
+class CourseService extends BaseService {
   get entity() {
-    return "student/v1/students";
+    return "plans";
   }
 
   // async fetch(force=false) {
@@ -22,4 +22,4 @@ class StudentService extends BaseService {
   // }
 }
 
-export default new StudentService();
+export default new CourseService();

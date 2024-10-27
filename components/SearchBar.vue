@@ -3,7 +3,9 @@
         <div class="flex px-4 py-6 justify-center items-center bg-gray-50 w-full">
             <el-input v-model="searchQuery" placeholder="Bạn đang tìm gì?" size="large" clearable>
             </el-input>
-            <el-button type="primary" :icon="Search" class="py-2" @click="handleSearch">Search</el-button>
+            <div>
+                <el-button type="primary" :icon="Search" class="custom-padding" @click="handleSearch">Search</el-button>
+            </div>
         </div>
     </div>
 </template>
@@ -15,3 +17,8 @@ const handleSearch = () => {
     router.push('/search');
 }
 </script>
+<style lang="css" scoped>
+.custom-padding {
+    @apply bg-primary py-5 px-4 ml-2 hover:bg-secondary
+  }
+</style>

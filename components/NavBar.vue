@@ -78,16 +78,24 @@ import SearchBar from '@/components/SearchBar.vue';
 
 const open = ref(false)
 const dropdownButtonRef = ref<HTMLButtonElement | null>(null)
-
+import { useOauthStore } from '@/stores/oauth';
+const oauthStore = useOauthStore()
+const authenticated = computed(() => {
+    const { tokenInfo } = oauthStore;
+    if (!tokenInfo) return false;
+    const { access_token } = tokenInfo;
+    if (!access_token) return false;
+    return access_token.length > 0;
+})
 const toggleNavbar = () => {
     open.value = !open.value
 }
 const navLinkItems = ref([
-    { text: 'Home', href: 'javascript:void(0)' },
-    { text: 'About Us', href: 'javascript:void(0)' },
-    { text: 'Services', href: 'javascript:void(0)' },
-    { text: 'Blog', href: 'javascript:void(0)' },
-    { text: 'Contact', href: 'javascript:void(0)' }
+    { text: 'Home', href: '/' },
+    { text: 'About Us', href: '/' },
+    { text: 'Services', href: '/' },
+    { text: 'Staff', href: '/admin' },
+    { text: 'Login', href: '/login' }
 ])
 
 
