@@ -6,7 +6,7 @@
       <span class="hidden sm:block text-black self-center text-2xl font-semibold whitespace-nowrap">University</span>
     </NuxtLink>
     <div class="flex flex-row items-center gap-2">
-      <Services v-if="authenticated" />
+      <SearchBar/>
       <CurrentUser v-if="authenticated" />
       <LanguageSelector />
     </div>
@@ -14,7 +14,6 @@
 </template>
 
 <script lang="ts" setup>
-// import Services from './Services.vue';
 import CurrentUser from './CurrentUser.vue';
 import LanguageSelector from './LanguageSelector.vue'
 import { useOauthStore } from '@/stores/oauth';

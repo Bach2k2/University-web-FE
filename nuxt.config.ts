@@ -6,8 +6,9 @@ export default defineNuxtConfig({
 
   runtimeConfig: {
     public: {
-      apiBase: "http://localhost:9004/api/v1",
-      defaultHost: "http://localhost:9000",
+      // apiBase: "http://172.188.9.27/api/auth/v1/",
+      apiBase: "http://localhost:80/api/",
+      defaultHost: "http://localhost:80",
     },
   },
   css: ["~/assets/scss/element/index.scss", "~/assets/css/main.css"],

@@ -1,6 +1,6 @@
 export default class Http {
   constructor() {
-    const { $api } = useNuxtApp().$createApi('http://127.0.0.1:9000/api/auth/v1/');
+    const { $api } = useNuxtApp();
     this.api = $api;
   }
 
