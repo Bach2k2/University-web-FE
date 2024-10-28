@@ -3,7 +3,7 @@ import { shouldFetch, createCachedEntry } from '@/utils/caching';
 
 class TeacherService extends BaseService {
   get entity() {
-    return "plans";
+    return "teachers";
   }
 
   // async fetch(force=false) {
