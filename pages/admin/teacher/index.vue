@@ -5,9 +5,9 @@
             :searchable="true">
             <el-table-column prop="name_content.origin" label="Name" min-width="150"></el-table-column>
             <el-table-column prop="updated_at" :label="$t('updated_at')" min-width="180" sortable>
-                <template #default="scope">
+                <!-- <template #default="scope">
                     {{ utcToLocalDateTime(scope.row.updated_at) }}
-                </template>
+                </template> -->
             </el-table-column>
         </PaginationTable>
     </div>
@@ -17,6 +17,6 @@
 definePageMeta({
     layout:'adminlayout'
 })
-import TeacherService from '@/services/data_feed/interests';
+import TeacherService from '@/services/teacher';
 import { utcToLocalDateTime } from '@/utils/time'
 </script>
