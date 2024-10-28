@@ -8,6 +8,7 @@ export default defineNuxtConfig({
     public: {
       // apiBase: "http://172.188.9.27/api/auth/v1/",
       apiBase: "http://localhost:80/api/",
+      // apiBase: "http://localhost:9001/api/v1/",
       defaultHost: "http://localhost:80",
     },
   },
