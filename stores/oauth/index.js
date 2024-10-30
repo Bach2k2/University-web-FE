@@ -89,7 +89,6 @@ export const useOauthStore= defineStore('oauth',{
                 exp,
                 nbf: nbf,
                 scope,
-                business_id
             }
 
         },

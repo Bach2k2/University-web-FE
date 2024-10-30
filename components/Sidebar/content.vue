@@ -2,7 +2,7 @@
     <div
         class="lg:py-2 lg:pl-2 w-60 fixed flex z-40 top-0 h-screen transition-position overflow-hidden -left-60 lg:left-0 lg:hidden xl:flex">
         <div class="aside lg:rounded-2xl flex-1 flex flex-col overflow-hidden ">
-            <div class="flex-1 overflow-y-auto overflow-x-hidden aside-scrollbars dark:aside-scrollbars-[slate]">
+            <div class="flex-1">
                 <el-menu class="el-menu-sidebar h-screen" background-color="#C33C54" :collapse="!isMobile && isCollapse"
                     @open="handleOpen" @close="handleClose" :router="true" :default-active="$route.fullPath">
                     <div v-if="!isCollapse" class="text-white flex flex-col items-center pt-2 sidebar-header">

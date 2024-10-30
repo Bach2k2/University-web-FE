@@ -34,6 +34,7 @@
 
                     <div class="hidden justify-end pr-16 sm:flex lg:pr-0">
                         <div class="flex items-center justify-end">
+                            <TopbarLanguageSelector />
                             <a href="javascript:void(0)" class="ml-5 text-white hover:opacity-70">
                                 <svg width="10" height="18" viewBox="0 0 10 18" class="fill-current">
                                     <path

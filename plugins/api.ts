@@ -18,8 +18,6 @@ export default defineNuxtPlugin(() => {
       if (language === "") language = null;
 
       const isAuthEndpoint = request.endsWith("/login");
-      console.log("Has access_token:", access_token);
-
       // Add headers if token or language is available
       if (access_token || language) {
         if (!options.headers) {
@@ -33,11 +31,10 @@ export default defineNuxtPlugin(() => {
         if (language) {
           headers.set("Accept-Language", language);
         }
-        console.log("headers: ", headers);
       }
     },
     async onResponseError({ response }) {
-      if (response.status === 401) {
+      if (response.status === 401|| response.status === 403 ) {
         const tokenInfo = oauthStore ? oauthStore.tokenInfo : null;
         const refresh_token = tokenInfo ? tokenInfo.refresh_token : null;
         if (refresh_token && refresh_token.trim() !== "") {
@@ -55,6 +52,8 @@ export default defineNuxtPlugin(() => {
             .catch((error) => {
               console.error(error);
               oauthStore.$reset();
+            }).finally(()=>{
+              console.log("check:")
             });
         }
       }

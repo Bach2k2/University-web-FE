@@ -1,10 +1,13 @@
 <template>
   <div
     class="w-full absolute space-x-* bg-on-primary flex flex-row align-middle py-2 px-8 justify-between border-b border-gray-200 z-10">
-    <NuxtLink to="/" class="flex flex-row items-center">
+    <!-- <NuxtLink to="/" class="flex flex-row items-center">
       <img src="https://cdn.tailgrids.com/2.0/image/assets/images/logo/logo-white.svg" alt="logo" class="w-full" />
       <span class="hidden sm:block text-black self-center text-2xl font-semibold whitespace-nowrap">University</span>
-    </NuxtLink>
+    </NuxtLink> -->
+    <div class="flex flex-row">
+
+    </div>
     <div class="flex flex-row items-center gap-2">
       <SearchBar/>
       <CurrentUser v-if="authenticated" />
