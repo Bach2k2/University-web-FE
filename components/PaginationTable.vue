@@ -19,39 +19,11 @@
             <slot />
             <el-table-column v-if="
                 canDeleteItems || canEditItems || approvalButtons || cancelButton
-            " :label="$t('Operations')" :min-width="minWidth">
+            " :label="$t('Operations')" :min-width="120">
                 <template #default="scope">
                     <el-button v-if="canEditItems" :icon="Edit" size="small" @click="editItem(scope.row.id)" />
                     <el-button v-if="canDeleteItems && !approvalButtons" :icon="Delete" size="small"
                         @click="onDeleteItem(scope.row)" />
-                    <div v-if="approvalButtons" class="flex">
-                        <el-tooltip :content="$t('approve')" placement="top" effect="light" :hide-after="50">
-                            <el-button v-if="
-                                canDeleteItems
-                                    ? ['pending', 'rejected'].includes(scope.row.status)
-                                    : ['pending', 'rejected'].includes(scope.row.status) &&
-                                    scope.row.approver.id === employeeId
-                            " :icon="Check" size="small" @click="handleApprove(scope.row)">
-                            </el-button>
-                        </el-tooltip>
-                        <el-tooltip :content="$t('reject')" placement="top" effect="light" :hide-after="50">
-                            <el-button v-if="
-                                canDeleteItems
-                                    ? ['pending', 'approved'].includes(scope.row.status)
-                                    : ['pending', 'approved'].includes(scope.row.status) &&
-                                    scope.row.approver.id === employeeId
-                            " :icon="Close" size="small" @click="handleReject(scope.row)">
-                            </el-button>
-                        </el-tooltip>
-                        <el-button v-if="canDeleteItems" :icon="Delete" size="small" @click="onDeleteItem(scope.row)" />
-                    </div>
-                    <el-button v-if="
-                        scope.row.status === 'pending' &&
-                        scope.row.employee.id === employeeId &&
-                        cancelButton
-                    " size="small" @click="onCancel(scope.row)">
-                        {{ $t("cancel") }}
-                    </el-button>
                 </template>
             </el-table-column>
         </el-table>
@@ -73,7 +45,7 @@
                 <div class="dialog-footer">
                     <el-button type="primary" @click="deleteItem">{{
                         $t("yes")
-                    }}</el-button>
+                        }}</el-button>
                     <el-button plain @click="cancelDeletingItem">
                         {{ $t("cancel") }}
                     </el-button>
@@ -92,7 +64,7 @@
                 <div class="dialog-footer">
                     <el-button type="primary" @click="multipleDelete">{{
                         $t("yes")
-                    }}</el-button>
+                        }}</el-button>
                     <el-button plain @click="cancelMultipleDeleting">
                         {{ $t("cancel") }}
                     </el-button>
@@ -203,7 +175,7 @@ const deleteItem = async () => {
     error.value = null;
     const { id } = deletingItem.value
     props.service.delete(id)
-        .then((response:any) => {
+        .then((response: any) => {
             const { page, results } = data.value;
             const newResults = results.filter(i => i.id !== id);
             if (newResults.length === 0 && page > 0) {
@@ -242,7 +214,7 @@ const multipleDelete = () => {
     const ids = items.map(item => item.id);
     error.value = null;
     props.service.multipleDelete(ids)
-        .then((response:any) => {
+        .then((response: any) => {
             const { page, results } = data.value;
             const newResults = results.filter(i => ids.indexOf(i.id) == -1);
             if (newResults.length === 0 && page > 0) {
@@ -274,7 +246,7 @@ const fetchData = async () => {
     loading.value = true;
     error.value = null;
     props.service.gets(query.value)
-        .then((response:any) => {
+        .then((response: any) => {
             if (page_size) {
                 const { page, num_pages, count, results } = response;
                 data.value = {
@@ -344,3 +316,18 @@ watch(query, async (newValue, oldValue) => {
 });
 
 </script>
+<style lang="css" scoped>
+table.el-table__header {
+    @apply bg-primary
+}
+
+.el-table__header-wrapper {
+    @apply bg-primary;
+}
+
+/* Apply background color to individual header cells */
+.el-table th.el-table__cell {
+    @apply bg-primary;
+    color: white; /* Optional: set text color */
+}
+</style>

@@ -23,6 +23,7 @@ export default defineNuxtConfig({
     "@primevue/nuxt-module",
     "@element-plus/nuxt",
     "nuxt-svgo",
+    "nuxt-lodash"
   ],
 
   pinia: {
@@ -69,7 +70,6 @@ export default defineNuxtConfig({
     defaultImport: "component",
     global: false,
   },
-
   lodash: {
     prefix: "_",
     prefixSkip: false,

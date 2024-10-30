@@ -12,19 +12,19 @@
           <IconDashboard color="white" style="cursor: pointer" class="el-icon" />
           <span class="text-white">{{ $t('dashboard') }}</span>
         </el-menu-item>
-        <el-menu-item index="/admin/students/">
+        <el-menu-item index="/admin/students">
           <IconStudent color="white" style="cursor: pointer" class="el-icon" />
           <span class="text-white">{{ $t('student') }}</span>
         </el-menu-item>
-        <el-menu-item index="/admin/course/">
+        <el-menu-item index="/admin/courses">
           <IconDashboard color="white" style="cursor: pointer" class="el-icon" />
           <span class="text-white">{{ $t('course') }}</span>
         </el-menu-item>
-        <el-menu-item index="/admin/document/">
+        <el-menu-item index="/admin/documents">
           <IconDashboard color="white" style="cursor: pointer" class="el-icon" />
           <span class="text-white">{{ $t('document') }}</span>
         </el-menu-item>
-        <el-sub-menu index="/admin/employees">
+        <el-sub-menu index="/admin/departments">
           <template #title>
             <span class="text-white">{{ $t('department') }}</span>
           </template>
