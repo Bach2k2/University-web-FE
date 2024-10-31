@@ -17,7 +17,7 @@ onMounted(() => {
     if (route.path.includes('search/')) {
         navigateTo(`${query}`);
     } else {
-        navigateTo(`search/${query}`);
+        navigateTo(`/search/${query}`);
     }
 });
 </script>
