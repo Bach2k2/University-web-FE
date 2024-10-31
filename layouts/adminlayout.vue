@@ -53,7 +53,7 @@
     </main>
   </div>
   <div v-else>
-    <AuthenticationLogin redirectTo="/admin" />
+    <AuthenticationLogin redirectTo={{null}} />
   </div>
 </template>
 
