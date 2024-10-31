@@ -75,9 +75,9 @@ const authenticated = computed(() => {
   return access_token.length > 0;
 })
 const router = useRouter();
-// onMounted(() => {
-//   if (!authenticated) {
-//     router.push('/login')
-//   }
-// })
+onMounted(() => {
+  if (!authenticated) {
+    navigateTo('/login')
+  }
+})
 </script>

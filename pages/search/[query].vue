@@ -38,6 +38,7 @@
 import type { TabsPaneContext } from 'element-plus'
 import SearchService from '@/services/search'
 const {t} = useI18n();
+const route = useRoute();
 const activeName = ref('show_all')
 const results = ref<any[]>([])
 const handleClick = (tab: TabsPaneContext, event: Event) => {
@@ -49,7 +50,7 @@ const lastQuery=ref('')
 const checkSearch= ref(false)
 const formattedResults = computed(()=> {
             const length = results.value.length; // Ensure results is defined
-            const query = searchQuery.value; // Adjust to your query variable
+            const query = lastQuery.value; // Adjust to your query variable
             return t('show_results', {
                 length: `<strong><em>${length}</em></strong>`,
                 query: `<strong><em>${query}</em></strong>`
@@ -65,9 +66,22 @@ const handleSearch =()=>{
     }).catch((err)=>{
         console.log(err)
     }).finally(()=>{
-        searchLoading.value = false
+        searchLoading.value = false;
+        if (results.value.length > 0) {
+            checkSearch.value = true;
+        } else {
+            checkSearch.value = false;
+        }
     })
 }
+
+onMounted(() => {
+    const { query } = route.params;
+    if (query !== "​") {
+        searchQuery.value = query;
+        handleSearch();
+    } 
+});
 
 // const fetchResults = async (tabName: string) => {
 //     // Simulate an API call for different tab results
@@ -119,6 +133,10 @@ const handleSearch =()=>{
 watch(activeName, (newTab) => {
     // Fetch new results when tab changes
     // fetchResults(newTab);
+});
+
+watch(searchQuery.value, (newQuery) => {
+    searchQuery.value = newQuery;
 });
 
 // Fetch initial data for "show_all"
