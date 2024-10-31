@@ -6,6 +6,7 @@ const vi = {
   student_management: "Quản lý sinh viên",
   show_all: "Hiển thị tất cả",
   show_results: `{length} kết quả tìm thấy cho {query}`,
+  show_results_failed: `Không có kết quả tìm thấy cho {query}. Vui lòng thử lại.`,
   search_query: "Bạn muốn tìm gì?",
   add_new: "Thêm mới",
   back: 'Quay lại',

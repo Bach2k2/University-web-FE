@@ -49,12 +49,19 @@ const searchQuery = ref('')
 const lastQuery=ref('')
 const checkSearch= ref(false)
 const formattedResults = computed(()=> {
+    if (results.value.length > 0) {
             const length = results.value.length; // Ensure results is defined
             const query = lastQuery.value; // Adjust to your query variable
             return t('show_results', {
                 length: `<strong><em>${length}</em></strong>`,
                 query: `<strong><em>${query}</em></strong>`
             });
+    } else {
+        const query = lastQuery.value;
+        return t('show_results_failed', {
+            query: `<strong><em>${query}</em></strong>`,
+        });
+    }
 }) 
 const handleSearch =()=>{
     searchLoading.value= true
@@ -67,11 +74,6 @@ const handleSearch =()=>{
         console.log(err)
     }).finally(()=>{
         searchLoading.value = false;
-        if (results.value.length > 0) {
-            checkSearch.value = true;
-        } else {
-            checkSearch.value = false;
-        }
     })
 }
 
