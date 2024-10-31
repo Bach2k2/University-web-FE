@@ -3,7 +3,7 @@ import BaseService from "./base";
 
 class CourseService extends BaseService {
   get entity() {
-    return "courses";
+    return "course/v1/courses";
   }
 
   // async fetch(force=false) {

@@ -6,6 +6,7 @@ const en = {
   student_management :" Student management",
   show_all: "Show all",
   show_results: `{length} results found for {query}`,
+  show_results_failed: `No results found for {query}. Please try again.`,
   search_query: "What do you want to search?",
   add_new: `Add`,
   back: 'Back',
