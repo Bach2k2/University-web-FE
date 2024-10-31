@@ -51,7 +51,7 @@
         store.$reset()
       })
       .finally(() => {
-        navigateTo("/");
+        // navigateTo("/");
       })
   
   }
