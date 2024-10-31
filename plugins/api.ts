@@ -31,6 +31,7 @@ export default defineNuxtPlugin(() => {
         if (language) {
           headers.set("Accept-Language", language);
         }
+        // headers.set("ngrok-skip-browser-warning", "true");
       }
     },
     async onResponseError({ response }) {
