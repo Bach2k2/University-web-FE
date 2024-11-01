@@ -8,7 +8,7 @@
           </el-breadcrumb>
         <div class="flex flex-col  items-center justify-center pt-20 px-5">
 
-            <PaginationTable :service="StudentService" :canAddItems="true" :canDeleteItems="true"
+            <PaginationTable :pageSize="5" :service="StudentService" :canAddItems="true" :canDeleteItems="true"
                 :canEditItems="true" :multipleSelect="true" :allowExportToExcel="true" :allowExportToJson="true"
                 :searchable="true">
                 <el-table-column prop="user.first_name" :label="$t('first_name')" min-width="150"></el-table-column>

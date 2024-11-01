@@ -1,9 +1,9 @@
 import { defineStore } from 'pinia';
 import { getCachedData, createCachedEntry } from '@/utils/caching';
 
-export const useStudentsStore = defineStore('students', {
+export const useRoomsStore = defineStore('rooms', {
     state: () => ({
-        students: {
+        rooms: {
             ...createCachedEntry([], 0)
         },
     }),
@@ -11,13 +11,13 @@ export const useStudentsStore = defineStore('students', {
         storage: persistedState.localStorage,
     },
     getters: {
-        allStudents: (state) => {
-            return getCachedData(state.students);
+        allRooms: (state) => {
+            return getCachedData(state.rooms);
         }
     },
     actions: {
-        setStudents(students) {
-            this.students = students;
+        setRooms(rooms) {
+            this.rooms = rooms;
         }
     },
 })

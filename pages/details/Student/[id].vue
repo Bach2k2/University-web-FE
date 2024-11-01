@@ -3,7 +3,8 @@
 </template>
 
 <script setup lang="ts">
-import UserService from '@/services/user';
+// import UserService from '@/services/user';
+import StudentService from '@/services/student';
 const route = useRoute();
 const { t } = useI18n();
 definePageMeta({
@@ -22,7 +23,7 @@ const fetchData = async () => {
   }
   error.value = null;
   loading.value = true;
-  UserService.get(id)
+  StudentService.get(id)
     .then((response) => {
       let data = response;
       console.log(response);

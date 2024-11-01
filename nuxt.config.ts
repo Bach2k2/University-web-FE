@@ -6,11 +6,7 @@ export default defineNuxtConfig({
 
   runtimeConfig: {
     public: {
-      // apiBase: "http://172.188.9.27/api/auth/v1/",
       apiBase: "http://localhost:80/api/",
-      // apiBase: "https://44f9-2405-4802-9601-3b0-1441-a7d5-eaf-dd17.ngrok-free.app/api/",
-      // apiBase: "http://localhost:9001/api/v1/",
-      defaultHost: "http://localhost:80",
     },
   },
   css: ["~/assets/scss/element/index.scss", "~/assets/css/main.css"],
@@ -76,4 +72,12 @@ export default defineNuxtConfig({
     prefixSkip: false,
     upperAfterPrefix: false,
   },
+
+  vite: {
+    optimizeDeps: {
+      include: [
+        'mermaid'
+      ]
+    }
+  }
 });

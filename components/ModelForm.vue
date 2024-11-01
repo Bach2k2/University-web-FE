@@ -50,6 +50,7 @@ const props = defineProps<{
     customCreateResponseParser?: (response: any) => any,
     addFn?: (data: any) => Promise<any>,
     updateFn?: (data: any) => Promise<any>,
+    customHandleResponse?: (data: any) => any,
     useParentHandlers?: Boolean // Biến boolean để kiểm tra có dùng hàm từ cha không
 }>();
 
@@ -141,21 +142,28 @@ const onSave = () => {
     });
 };
 
-const handleResponse = (response: any) => {
-    let data = response;
-    if (props.overrideIfFieldNullOrEmpty) {
-        data = overrideFieldIfNullOrEmpty(data, props.overrideIfFieldNullOrEmpty);
-    }
-    origin.value = _cloneDeep(data);
-    current.value = _cloneDeep(data);
-    if (!data.id) {
-        navigateTo(route.fullPath.replace('/new', `/${data.id}`));
-    }
-};
 
 const handleError = (e: any) => {
     error.value = getErrorMessage(e, t('an_error_occurred'));
 };
+const handleResponse = (response: any) => {
+    try {
+        console.log('res at mf', response);
+        let data = response;
+        if (props.overrideIfFieldNullOrEmpty) {
+            data = overrideFieldIfNullOrEmpty(data, props.overrideIfFieldNullOrEmpty);
+        }
+        origin.value = _cloneDeep(data);
+        current.value = _cloneDeep(data);
+        if (data.id) {
+            navigateTo(route.fullPath.replace('/new', `/${data.id}`));
+        }
+    } catch (err) {
+        console.log(err);
+    }
+};
+
+
 
 const saveEntry = async () => {
     let value = changes.value;
@@ -173,6 +181,8 @@ const saveEntry = async () => {
         if (value.id && props.updateFn) {
             props.updateFn(value).then(handleResponse).catch(handleError);
         } else if (!value.id && props.addFn) {
+            console.log("come on");
+
             props.addFn(value).then(handleResponse).catch(handleError);
         }
     } else {

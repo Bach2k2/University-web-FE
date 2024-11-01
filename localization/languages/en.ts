@@ -4,6 +4,7 @@ const en = {
   change_password: "Change password",
   education_management: "Education management",
   student_management :" Student management",
+  student_title : "Add new student",
   show_all: "Show all",
   show_results: `{length} results found for {query}`,
   show_results_failed: `No results found for {query}. Please try again.`,
@@ -14,6 +15,7 @@ const en = {
   first_name: "First name",
   last_name: "Last name",
   full_name: "Full name",
-  email: "Email"
+  email: "Email",
+
 };
 export default en;

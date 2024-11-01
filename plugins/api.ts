@@ -31,11 +31,11 @@ export default defineNuxtPlugin(() => {
         if (language) {
           headers.set("Accept-Language", language);
         }
-        // headers.set("ngrok-skip-browser-warning", "true");
+        headers.set("ngrok-skip-browser-warning", "true");
       }
     },
     async onResponseError({ response }) {
-      if (response.status === 401|| response.status === 403 ) {
+      if (response.status === 401 || response.status === 403) {
         const tokenInfo = oauthStore ? oauthStore.tokenInfo : null;
         const refresh_token = tokenInfo ? tokenInfo.refresh_token : null;
         if (refresh_token && refresh_token.trim() !== "") {
@@ -53,8 +53,9 @@ export default defineNuxtPlugin(() => {
             .catch((error) => {
               console.error(error);
               oauthStore.$reset();
-            }).finally(()=>{
-              console.log("check:")
+            })
+            .finally(() => {
+              // console.log("check:");
             });
         }
       }
