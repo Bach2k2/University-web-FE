@@ -36,17 +36,17 @@
                         <span v-else>{{ scope.current.title }}</span>
                     </el-form-item>
 
-                    <!-- <el-form-item :label="$t('start_date')" prop="start_date">
-                        <el-date-picker v-if="scope.editing" type="date"
-                            :placeholder="$t('pick_a_day')" />
+                    <el-form-item :label="$t('start_date')" prop="start_date">
+                        <el-date-picker v-if="scope.editing" v-model="scope.current.start_date" type="date"
+                            format="HH:mm:ss" value-format="HH:mm:ss" :placeholder="$t('pick_a_day')" />
                         <span v-else>{{ scope.current.start_date }}</span>
                     </el-form-item>
 
                     <el-form-item :label="$t('end_date')" prop="end_date">
-                        <el-date-picker v-if="scope.editing" type="date"
-                            :placeholder="$t('pick_a_day')" />
+                        <el-date-picker v-if="scope.editing" v-model="scope.current.end_date" type="date"
+                            format="HH:mm:ss" value-format="HH:mm:ss" :placeholder="$t('pick_a_day')" />
                         <span v-else>{{ scope.current.end_date }}</span>
-                    </el-form-item> -->
+                    </el-form-item>
 
                     <!-- <el-form-item :label="$t('join_date')" prop="end_date">
                         <el-date-picker v-if="scope.editing" v-model="scope.current.end_date" type="date"
