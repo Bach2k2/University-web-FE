@@ -4,13 +4,19 @@ export default defineNuxtConfig({
   compatibilityDate: "2024-04-03",
   devtools: { enabled: true },
 
+  experimental: {
+    appManifest: false,
+  },
+
   runtimeConfig: {
     public: {
-      apiBase: "http://localhost:80/api/",
+      // apiBase: "http://localhost:80/api/",
+      apiBase: "https://glowworm-endless-gull.ngrok-free.app/api/",
     },
   },
   css: ["~/assets/scss/element/index.scss", "~/assets/css/main.css"],
 
+  
   modules: [
     "@nuxtjs/i18n",
     "@pinia/nuxt",
@@ -20,7 +26,8 @@ export default defineNuxtConfig({
     "@primevue/nuxt-module",
     "@element-plus/nuxt",
     "nuxt-svgo",
-    "nuxt-lodash"
+    "nuxt-lodash",
+    "dayjs-nuxt",
   ],
 
   pinia: {
@@ -73,11 +80,21 @@ export default defineNuxtConfig({
     upperAfterPrefix: false,
   },
 
+  dayjs: {
+    plugins: ['customParseFormat', 'relativeTime', 'utc'],
+  },
+
   vite: {
-    optimizeDeps: {
-      include: [
-        'mermaid'
-      ]
-    }
-  }
+    css: {
+      preprocessorOptions: {
+        sass: {
+          api: "modern",
+        },
+      },
+    },
+    build: {
+      manifest: "Frontend.manifest.json",
+    },
+  },
+
 });

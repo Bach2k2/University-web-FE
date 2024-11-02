@@ -1,4 +1,4 @@
-// import moment from "moment/moment";
+import moment from "moment/moment";
 
 export const FORMAT = {
   DATE: "YYYY-MM-DD",
@@ -6,29 +6,29 @@ export const FORMAT = {
   DATE_TIME: "YYYY-MM-DD HH:mm:ss",
 };
 
-// export function formatDate(value: any, format: string | null = null) {
-//   if (!value) {
-//     return null;
-//   }
-//   if (format) {
-//     return moment(String(value)).format(format);
-//   }
-//   return moment(String(value)).format(FORMAT.DATE);
-// }
+export function formatDate(value: any, format: string | null = null) {
+  if (!value) {
+    return null;
+  }
+  if (format) {
+    return moment(String(value)).format(format);
+  }
+  return moment(String(value)).format(FORMAT.DATE);
+}
 
-// export function formatDateTime(value: any, format: string | null = null, utc = true) {
-//   if (!value) {
-//     return null;
-//   }
+export function formatDateTime(value: any, format: string | null = null, utc = true) {
+  if (!value) {
+    return null;
+  }
   
-//   const momentValue = utc ? moment.utc(value) : moment(value);
+  const momentValue = utc ? moment.utc(value) : moment(value);
   
-//   if (format) {
-//     return momentValue.format(format);
-//   }
+  if (format) {
+    return momentValue.format(format);
+  }
   
-//   return momentValue.format('YYYY-MM-DD HH:mm:ss'); // Default format if no format is provided
-// }
+  return momentValue.format('YYYY-MM-DD HH:mm:ss'); // Default format if no format is provided
+}
 
 export function getCurrentDateTime(format: string | null = null, utc = true) {
   const currentMoment = utc ? moment.utc() : moment();

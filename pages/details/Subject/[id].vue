@@ -1,5 +1,20 @@
 <template>
   <!-- <SubjectEditor/> -->
+  <section v-if="subject" class="mb-6">
+    <h2 class="text-2xl font-bold text-green-600 mb-3">{{ $t('subject_info') }}</h2>
+    <DetailsCard :title="$t('subject_details')">
+      <template #labels>
+        <p>{{ $t('subject_id') }}:</p>
+        <p>{{ $t('title') }}:</p>
+        <p>{{ $t('credit') }}:</p>
+      </template>
+      <template #data>
+        <p>{{ subject.id }}</p>
+        <p>{{ subject.title }}</p>
+        <p>{{ subject.credit }}</p>
+      </template>
+    </DetailsCard>
+  </section>
 </template>
 
 <script setup lang="ts">
@@ -10,7 +25,7 @@ definePageMeta({
   layout: 'adminlayout'
 });
 
-const Subject = ref<any>(null);
+const subject = ref<any>(null);
 const error = ref(null);
 const loading = ref(false);
 
@@ -27,7 +42,7 @@ const fetchData = async () => {
       let data = response;
       console.log(response);
 
-      Subject.value = _cloneDeep(data);
+      subject.value = _cloneDeep(data);
     })
     .catch((e) => {
       error.value = getErrorMessage(e, e.statusCode ? t('an_error_occurred') : t('connection_corrupted'));

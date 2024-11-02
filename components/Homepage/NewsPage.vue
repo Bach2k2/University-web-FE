@@ -37,6 +37,7 @@
 </template>
 <script setup>
 import { Calendar } from '@element-plus/icons-vue';
+import { formatDate } from '@/utils/time'
 const news = ref([
     {
         name: "Nhà phát minh tuổi teen về robot phân loại rác AI giành học bổng RMIT",
