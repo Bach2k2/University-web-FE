@@ -12,10 +12,14 @@ const vi = {
   add_new: "Thêm mới",
   back: "Quay lại",
 
-  first_name: "Họ",
-  last_name: "Tên",
+  first_name: "Tên",
+  last_name: "Họ",
   full_name: "Tên đầy đủ",
   email: "Địa chỉ email",
+  date_of_birth: "Ngày sinh",
+  degree: "Bằng cấp",
+  academic_title: "Học vị",
+  biography: "Tiểu sử",
 
   classroom_info: "Thông tin phòng học",
   classroom_details: "Chi tiết phòng học",

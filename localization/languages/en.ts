@@ -16,6 +16,10 @@ const en = {
   last_name: "Last name",
   full_name: "Full name",
   email: "Email",
+  date_of_birth: "Date of birth",
+  degree: "Degree",
+  academic_title: "Academic Title",
+  biography: "Biography",
 
   //Room:
   classroom_info: "Classroom Information",
