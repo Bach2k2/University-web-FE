@@ -21,11 +21,7 @@ const route = useRoute();
 const router = useRouter();
 const searchQuery = ref(props.query);
 const handleSearch = () => {
-    if (route.path.includes('search/')) {
-        navigateTo(`${searchQuery.value}`);
-    } else {
-        navigateTo(`/search/${searchQuery.value}`);
-    }
+    navigateTo(`/search/${searchQuery.value}`);
     emit('search', searchQuery.value)
 }
 
