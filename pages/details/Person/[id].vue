@@ -9,13 +9,21 @@
         <p>{{ $t('last_name') }}:</p>
         <p>{{ $t('email') }}:</p>
         <p>{{ $t('roles') }}:</p>
+        <p>{{ $t('date_of_birth') }}:</p>
+        <p>{{ $t('degree') }}:</p>
+        <p>{{ $t('academic_title') }}:</p>
+        <p>{{ $t('biography') }}:</p>
       </template>
       <template #data>
         <p>{{ person.id }}</p>
         <p>{{ person.first_name }}</p>
-        <p>{{ person.last_name.title }}</p>
+        <p>{{ person.last_name }}</p>
         <p>{{ person.email }}</p>
         <p>{{ person.roles[0].name }}</p>
+        <p>{{ person.user_detail.date_of_birth }}</p>
+        <p>{{ person.user_detail.degree }}</p>
+        <p>{{ person.user_detail.academic_title }}</p>
+        <p>{{ person.user_detail.biography }}</p>
       </template>
     </DetailsCard>
   </section>
