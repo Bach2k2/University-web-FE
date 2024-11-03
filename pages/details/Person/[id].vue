@@ -13,7 +13,7 @@
       <template #data>
         <p>{{ person.id }}</p>
         <p>{{ person.first_name }}</p>
-        <p>{{ person.last_name.title }}</p>
+        <p>{{ person.last_name }}</p>
         <p>{{ person.email }}</p>
         <p>{{ person.roles[0].name }}</p>
       </template>
