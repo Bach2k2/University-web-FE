@@ -51,11 +51,10 @@ const { t } = useI18n();
 const oauthStore = useOauthStore();
 const roleStore = useRolesStore();
 const canEdit = computed(() => {
-    // return oauthStore.hasOneOfScopes(["admin:students:edit"]);
-    return true;
+    return oauthStore.hasOneOfScopes(["admin:students:edit"]);
 });
 const canView = computed(() => {
-    return true;
+    return oauthStore.hasOneOfScopes(["admin:students:view"]);
 });
 
 const fetchData = async () => {

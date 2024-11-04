@@ -30,7 +30,7 @@ import CourseService from '@/services/course';
 const route = useRoute();
 const { t } = useI18n();
 definePageMeta({
-  layout: 'adminlayout'
+  layout: 'detail'
 });
 
 const course = ref<any>(null);

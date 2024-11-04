@@ -28,7 +28,7 @@ import DepartmentService from '@/services/department';
 const route = useRoute();
 const { t } = useI18n();
 definePageMeta({
-  layout: 'adminlayout'
+  layout: 'detail'
 });
 
 const department = ref<any>(null);

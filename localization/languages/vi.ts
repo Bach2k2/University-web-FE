@@ -12,6 +12,12 @@ const vi = {
   add_new: "Thêm mới",
   back: "Quay lại",
 
+  email_phone_username: "Username",
+  password: "Password",
+
+  no_permission: "Bạn không có quyền xem trang này.",
+  dont_have_permission: "Bạn không có quyền thực hiện hành động này.",
+
   first_name: "Tên",
   last_name: "Họ",
   full_name: "Tên đầy đủ",

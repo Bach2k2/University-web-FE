@@ -28,7 +28,7 @@ import DetailsCard from '~/components/DetailsCard.vue';
 const route = useRoute();
 const { t } = useI18n();
 definePageMeta({
-  layout: 'adminlayout'
+  layout: 'detail'
 });
 
 const lectureHall = ref<any>(null);

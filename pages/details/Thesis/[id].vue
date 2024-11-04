@@ -31,7 +31,7 @@ import { getErrorMessage } from '@/utils/error'; // Adjust the import based on y
 const route = useRoute();
 const { t } = useI18n();
 definePageMeta({
-  layout: 'adminlayout'
+  layout: 'detail'
 });
 
 const thesis = ref<any>(null);

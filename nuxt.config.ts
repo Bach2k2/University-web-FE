@@ -95,6 +95,9 @@ export default defineNuxtConfig({
     build: {
       manifest: "Frontend.manifest.json",
     },
+    optimizeDeps: {
+      include: ['dayjs', 'dayjs/plugin/*']
+    },
   },
 
 });

@@ -9,6 +9,7 @@
                 </div>
             </div>
             <el-form ref="formRef" :model="formData" :rules="rules">
+                <span class="text-primary">{{error}}</span>
                 <div class="mt-2">
                     <el-form-item class="wrap-input username-wrap validate-input" prop="email">
                         <input class="input" type="text" :placeholder="$t('email_phone_username')"
@@ -94,7 +95,7 @@ const login = async () => {
             })
             .catch(e => {
                 console.warn(e);
-                error.value = getErrorMessage(e, t('an_error_occurred'));
+                error.value = e.error;
             })
     });
 

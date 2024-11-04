@@ -53,7 +53,9 @@
     </main>
   </div>
   <div v-else>
+    <NavBar/>
     <AuthenticationLogin />
+    <Footer/>
   </div>
 </template>
 
@@ -76,8 +78,8 @@ const authenticated = computed(() => {
 })
 const router = useRouter();
 onMounted(() => {
-  if (!authenticated) {
-    navigateTo('/login')
-  }
+  // if (!authenticated.value) {
+  //   navigateTo('/login')
+  // }
 })
 </script>
