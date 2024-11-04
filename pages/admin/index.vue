@@ -15,46 +15,50 @@
             </section>
             <section class="p-6 xl:max-w-6xl xl:mx-auto w-full">
                 <div class="grid grid-cols-1 gap-6 lg:grid-cols-3 mb-6">
-                    <div v-for="(item, index) in items" :key="index" class="rounded-2xl flex-col dark:bg-slate-900/70 bg-white flex">
+                    <div v-for="(item, index) in items" :key="index"
+                        class="rounded-2xl flex-col dark:bg-slate-900/70 bg-white flex">
                         <div class="flex-1 p-6">
-                          <div class="justify-between items-center flex mb-3">
-                            <div class="flex items-center justify-center">
-                              <div class="inline-flex items-center capitalize leading-none text-xs border rounded-full py-1 px-3"
-                                   :class="item.badgeBgClass">
-                                <span class="inline-flex justify-center items-center w-4 h-4 mr-1">
-                                  <el-icon>
-                                    <component :is="item.iconComponent" />
-                                  </el-icon>
-                                </span>
-                                <span>{{ item.percentage }}%</span>
-                              </div>
+                            <div class="justify-between items-center flex mb-3">
+                                <div class="flex items-center justify-center">
+                                    <div class="inline-flex items-center capitalize leading-none text-xs border rounded-full py-1 px-3"
+                                        :class="item.badgeBgClass">
+                                        <span class="inline-flex justify-center items-center w-4 h-4 mr-1">
+                                            <el-icon>
+                                                <component :is="item.iconComponent" />
+                                            </el-icon>
+                                        </span>
+                                        <span>{{ item.percentage }}%</span>
+                                    </div>
+                                </div>
+                                <div class="flex items-center justify-center">
+                                    <button
+                                        class="inline-flex justify-center items-center whitespace-nowrap focus:outline-none transition-colors focus:ring duration-150 border cursor-pointer rounded"
+                                        type="button">
+                                        <span class="inline-flex justify-center items-center w-6 h-6">
+                                            <SettingIcon />
+                                        </span>
+                                    </button>
+                                </div>
                             </div>
-                            <div class="flex items-center justify-center">
-                              <button class="inline-flex justify-center items-center whitespace-nowrap focus:outline-none transition-colors focus:ring duration-150 border cursor-pointer rounded"
-                                      type="button">
-                                <span class="inline-flex justify-center items-center w-6 h-6">
-                                  <SettingIcon />
-                                </span>
-                              </button>
+                            <div class="justify-between items-center flex">
+                                <div class="flex items-center justify-center">
+                                    <div>
+                                        <h3 class="text-lg leading-tight" :class="item.textColorClass">{{ item.title }}
+                                        </h3>
+                                        <h1 class="text-3xl leading-tight font-semibold">
+                                            <div>{{ item.number }}</div>
+                                        </h1>
+                                    </div>
+                                </div>
+                                <div class="flex items-center justify-center">
+                                    <span class="inline-flex justify-center items-center h-16"
+                                        :class="item.iconColorClass">
+                                        <component :is="item.mainIconComponent" class="w-[48px]" />
+                                    </span>
+                                </div>
                             </div>
-                          </div>
-                          <div class="justify-between items-center flex">
-                            <div class="flex items-center justify-center">
-                              <div>
-                                <h3 class="text-lg leading-tight" :class="item.textColorClass">{{ item.title }}</h3>
-                                <h1 class="text-3xl leading-tight font-semibold">
-                                  <div>{{ item.number }}</div>
-                                </h1>
-                              </div>
-                            </div>
-                            <div class="flex items-center justify-center">
-                              <span class="inline-flex justify-center items-center h-16" :class="item.iconColorClass">
-                                <component :is="item.mainIconComponent" class="w-[48px]" />
-                              </span>
-                            </div>
-                          </div>
                         </div>
-                      </div>
+                    </div>
 
 
                     <!-- <div v-for="(item, index) in items" class="rounded-2xl flex-col dark:bg-slate-900/70 bg-white flex">
@@ -103,13 +107,21 @@
                             </div>
                         </div>
                     </div> -->
-                    
+
                 </div>
             </section>
+            <section class="p-6 xl:max-w-6xl xl:mx-auto w-full">
+                <div class="bg-white p-4 rounded-lg shadow-md h-[374px]">
+                    <Chart type="bar" :data="chartData" :options="chartOptions" class="h-full"/>
+                </div>
+            </section>
+
+           
         </div>
         <div v-else>
             <span>{{ $t('no_permission') }}</span>
         </div>
+        <AdminFooter class="bottom-0"/>
     </main>
 
 </template>
@@ -118,11 +130,18 @@ definePageMeta({
     layout: 'adminlayout'
 })
 import UserIcon from '@/assets/icons/users.svg'
+import StudentIcon from '@/assets/icons/students.svg'
+import TeacherIcon from '@/assets/icons/teachers.svg'
 import SettingIcon from '@/assets/icons/settings.svg'
 import { ArrowUp, ArrowDown } from '@element-plus/icons-vue'
 import { useOauthStore } from '@/stores/oauth';
+import { useTeachersStore } from '@/stores/teacher';
+import { useStudentsStore } from '@/stores/student';
+import StudentService from '@/services/student';
+import TeacherService from '@/services/teacher';
 const oauthStore = useOauthStore();
-
+const studentStore = useStudentsStore();
+const teacherStore = useTeachersStore();
 const canView = computed(() => {
     return oauthStore.hasOneOfScopes(["admin:students:view"]);
 });
@@ -130,34 +149,87 @@ const canView = computed(() => {
 const length = 3;
 const items = ref([
     {
-        percentage: 12,
-        title: 'Clients',
+        percentage: 10,
+        title: 'Users',
         number: 512,
-        badgeBgClass: 'bg-emerald-500 border-emerald-500 text-white',
+        badgeBgClass: 'bg-blue-500 border-blue-500 text-white',
         iconComponent: ArrowUp,
         mainIconComponent: UserIcon,
-        iconColorClass: 'text-emerald-500',
-        textColorClass: 'text-gray-500 dark:text-slate-400'
+        iconColorClass: 'text-blue-500',
+        textColorClass: 'text-gray-500 dark:text-slate-400',
     },
     {
-        percentage: 12,
-        title: 'Clients',
-        number: 512,
-        badgeBgClass: 'bg-emerald-500 border-emerald-500 text-white',
+        percentage: 15,
+        title: 'Students',
+        number: computed(() => studentStore.studentsCount),
+        badgeBgClass: 'bg-green-500 border-green-500 text-white',
         iconComponent: ArrowUp,
-        mainIconComponent: UserIcon,
-        iconColorClass: 'text-emerald-500',
-        textColorClass: 'text-gray-500 dark:text-slate-400'
+        mainIconComponent: StudentIcon,
+        iconColorClass: 'text-green-500',
+        textColorClass: 'text-gray-500 dark:text-slate-400',
     },
     {
-        percentage: 12,
-        title: 'Clients',
-        number: 512,
-        badgeBgClass: 'bg-emerald-500 border-emerald-500 text-white',
-        iconComponent: ArrowUp,
-        mainIconComponent: UserIcon,
-        iconColorClass: 'text-emerald-500',
-        textColorClass: 'text-gray-500 dark:text-slate-400'
+        percentage: 8,
+        title: 'Teachers',
+        number: computed(() => teacherStore.teachersCount),
+        badgeBgClass: 'bg-red-500 border-red-500 text-white',
+        iconComponent: ArrowDown,  // Using a different icon for variety
+        mainIconComponent: TeacherIcon,
+        iconColorClass: 'text-red-500',
+        textColorClass: 'text-gray-500 dark:text-slate-400',
     },
-    ])
+]);
+
+const chartData = {
+  labels: [
+    'Jan 2018', 'Jan 2019', 'Jan 2020', 'Jan 2021', 'Jan 2022', 'Jan 2023', 'Jan 2024'
+  ],
+  datasets: [
+    {
+      label: 'Enrollment',
+      backgroundColor: '#4CAF50',
+      borderColor: '#4CAF50',
+      data: [300, 400, 500, 450, 600, 700, 800], // Sample enrollment data for each year
+    },
+    {
+      label: 'Graduation',
+      backgroundColor: '#FF9800',
+      borderColor: '#FF9800',
+      data: [100, 150, 200, 250, 300, 350, 400], // Sample graduation data for each year
+    },
+  ],
+};
+const chartOptions = {
+    responsive: true,
+    maintainAspectRatio: false,
+    plugins: {
+        legend: {
+            display: true,
+            position: 'top',
+        },
+    },
+    scales: {
+        x: {
+            title: {
+                display: true,
+                text: 'Months',
+            },
+        },
+        y: {
+            title: {
+                display: true,
+                text: 'Number of Students',
+            },
+            beginAtZero: true,
+        },
+    },
+};
+
+const fetchData = () => {
+    StudentService.fetch();
+    TeacherService.fetch();
+}
+onMounted(() => {
+    fetchData();
+})
 </script>

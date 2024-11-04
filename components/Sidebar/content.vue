@@ -5,7 +5,7 @@
             <div class="flex-1">
                 <el-menu class="el-menu-sidebar h-screen" background-color="#C33C54" :collapse="!isMobile && isCollapse"
                     @open="handleOpen" @close="handleClose" :router="true" :default-active="$route.fullPath">
-                    <div v-if="!isCollapse" class="text-white flex flex-col items-center pt-2 sidebar-header">
+                    <div v-if="!isCollapse" class="text-white flex flex-col items-center pt-2 sidebar-header mt-4">
                         <slot name="header" />
                         <el-divider border-style="solid" />
                         <div v-if="!isCollapse && !isMobile" class="hidden sm:block absolute self-end px-3 py-2"
@@ -17,7 +17,7 @@
                     </div>
                     <div v-if="isCollapse && !isMobile" class="flex flex-col items-center px-3 py-2"
                         @click="expandSideBar">
-                        <el-icon color="white" style="cursor: pointer">
+                        <el-icon color="black" style="cursor: pointer">
                             <DArrowRight />
                         </el-icon>
                     </div>

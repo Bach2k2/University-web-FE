@@ -11,12 +11,11 @@ export default defineNuxtConfig({
   runtimeConfig: {
     public: {
       // apiBase: "http://localhost:80/api/",
-      apiBase: "https://glowworm-endless-gull.ngrok-free.app/api/",
+      apiBase: process.env.API_BASE,
     },
   },
   css: ["~/assets/scss/element/index.scss", "~/assets/css/main.css"],
 
-  
   modules: [
     "@nuxtjs/i18n",
     "@pinia/nuxt",
@@ -81,7 +80,7 @@ export default defineNuxtConfig({
   },
 
   dayjs: {
-    plugins: ['customParseFormat', 'relativeTime', 'utc'],
+    plugins: ["customParseFormat", "relativeTime", "utc"],
   },
 
   vite: {
@@ -92,6 +91,9 @@ export default defineNuxtConfig({
         },
       },
     },
+    optimizeDeps: {
+      include: ["dayjs", "dayjs/plugin/*"],
+    },
     build: {
       manifest: "Frontend.manifest.json",
     },
@@ -99,5 +101,4 @@ export default defineNuxtConfig({
       include: ['dayjs', 'dayjs/plugin/*']
     },
   },
-
 });

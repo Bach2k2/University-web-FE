@@ -5,8 +5,9 @@
             <div class="relative -mx-4 flex items-center justify-between">
                 <div class="max-w-full px-4 w-60">
                     <a href="javascript:void(0)" class="block w-full py-5 lg:py-3 ml-5">
-                        <img src="https://cdn.tailgrids.com/2.0/image/assets/images/logo/logo-white.svg" alt="logo"
-                            class="w-full" />
+                        <!-- <img src="https://cdn.tailgrids.com/2.0/image/assets/images/logo/logo-white.svg" alt="logo"
+                            class="w-full" /> -->
+                        <MyUniversityLogo class="w-full h-auto" />
                     </a>
                 </div>
                 <div class="flex w-full items-center justify-between px-4">
@@ -73,8 +74,7 @@
 </template>
 <script lang="ts" setup>
 import { onMounted, onUnmounted, ref } from 'vue'
-// import { Carousel, Navigation, Pagination, Slide } from 'vue3-carousel' // ko su dung duoc
-
+import MyUniversityLogo from '@/assets/icons/light_logo.svg'
 import SearchBar from '@/components/SearchBar.vue';
 
 const open = ref(false)

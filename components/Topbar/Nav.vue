@@ -6,17 +6,20 @@
       <span class="hidden sm:block text-black self-center text-2xl font-semibold whitespace-nowrap">University</span>
     </NuxtLink> -->
     <div class="flex flex-row">
-
+      <MyUniversityLogo />
     </div>
     <div class="flex flex-row items-center gap-2">
-      <SearchBar/>
+      <SearchBar />
       <CurrentUser v-if="authenticated" />
-      <LanguageSelector />
+      <div class="flex">
+        <LanguageSelector />
+      </div>
     </div>
   </div>
 </template>
 
 <script lang="ts" setup>
+import MyUniversityLogo from '@/assets/icons/dark_logo.svg'
 import CurrentUser from './CurrentUser.vue';
 import LanguageSelector from './LanguageSelector.vue'
 import { useOauthStore } from '@/stores/oauth';
