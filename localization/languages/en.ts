@@ -12,6 +12,9 @@ const en = {
   add_new: `Add`,
   back: "Back",
 
+  email_phone_username: "Username",
+  password: "Password",
+  
   no_permission: "You do not have permission to view this page.",
   dont_have_permission: "You do not have permission to perform this action.",
 
