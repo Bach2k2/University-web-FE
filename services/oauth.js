@@ -1,6 +1,7 @@
 import BaseService from "./base";
 import { useOauthStore } from "@/stores/oauth";
 // import { shouldFetch, createCachedEntry } from '@/utils/caching';
+import UserService from "./user";
 
 class OAuthService extends BaseService {
   get entity() {
@@ -24,6 +25,16 @@ class OAuthService extends BaseService {
             access_token,
             refresh_token,
           });
+
+          UserService.get(store.tokenInfo.sub)
+            .then((response) => {
+              let user = response;
+              store.setUser(user);
+            })
+            .catch((err) => {
+              console.log("err.data", err.data);
+              return err.data;
+            });
 
           // return this.userinfo()
           //   .then(account => {

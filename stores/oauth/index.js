@@ -80,7 +80,7 @@ export const useOauthStore= defineStore('oauth',{
     },
     actions: {
         setTokenInfo({ access_token, refresh_token }) {
-            const { sub, iat, exp, nbf, scope, business_id } = jwtDecode(access_token);
+            const { sub, iat, exp, nbf, scope } = jwtDecode(access_token);
             this.tokenInfo = {
                 access_token,
                 refresh_token,
