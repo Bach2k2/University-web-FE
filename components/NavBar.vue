@@ -96,9 +96,13 @@ const navLinkItems = ref([
     { text: 'About Us', href: '/' },
     { text: 'Services', href: '/' },
     { text: 'Staff', href: '/admin' },
-    { text: 'Login', href: '/login' }
+    { text: 'Login', href: '/login' },
+    { text: 'Logout', href: '/logout' },
 ])
 
+const canEdit = computed(() => {
+    return oauthStore.hasOneOfScopes(["admin:students:view"]);
+})
 
 // Computed property to filter nav items based on authentication status
 const filteredNavLinkItems = computed(() => {
@@ -106,6 +110,12 @@ const filteredNavLinkItems = computed(() => {
     return navLinkItems.value.filter(item => {
         // If user is authenticated, exclude the Login item
         if (authenticated.value && item.text === 'Login') {
+            return false;
+        }
+        if (!authenticated.value && item.text === 'Logout') {
+            return false;
+        }
+        if (!canEdit.value && item.text === 'Staff') {
             return false;
         }
         return true;
