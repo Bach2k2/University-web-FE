@@ -33,7 +33,7 @@ class OAuthService extends BaseService {
             })
             .catch((err) => {
               console.log("err.data", err.data);
-              return err.data;
+              throw err.data;
             });
 
           // return this.userinfo()
@@ -45,7 +45,7 @@ class OAuthService extends BaseService {
       })
       .catch((err) => {
         console.log('err.data',err.data);
-        return err.data
+        throw err.data;
       });
   }
 
