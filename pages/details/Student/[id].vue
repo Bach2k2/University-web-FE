@@ -27,7 +27,7 @@ import StudentService from '@/services/student';
 const route = useRoute();
 const { t } = useI18n();
 definePageMeta({
-  layout: 'adminlayout'
+  layout: 'detail'
 });
 
 const student = ref<any>(null);

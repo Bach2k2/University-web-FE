@@ -24,7 +24,7 @@ import SubjectMaterialService from '@/services/subject_material';
 const route = useRoute();
 const { t } = useI18n();
 definePageMeta({
-  layout: 'adminlayout'
+  layout: 'detail'
 });
 
 const subjectMaterial = ref<any>(null);

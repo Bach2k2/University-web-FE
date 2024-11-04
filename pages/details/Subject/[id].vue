@@ -22,7 +22,7 @@ import SubjectService from '@/services/subject';
 const route = useRoute();
 const { t } = useI18n();
 definePageMeta({
-  layout: 'adminlayout'
+  layout: 'detail'
 });
 
 const subject = ref<any>(null);

@@ -26,7 +26,7 @@ import RoomService from '@/services/room';
 const route = useRoute();
 const {t} = useI18n();
 definePageMeta({
-  layout: 'adminlayout'
+  layout: 'detail'
 });
 
 const officeRoom = ref<any>(null);

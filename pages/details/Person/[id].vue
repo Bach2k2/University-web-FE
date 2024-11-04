@@ -34,7 +34,7 @@ import UserService from '@/services/user';
 const route = useRoute();
 const {t} = useI18n();
 definePageMeta({
-  layout: 'adminlayout'
+  layout: 'detail'
 });
 
 const person = ref<any>(null);
