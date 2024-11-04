@@ -12,6 +12,9 @@ const en = {
   add_new: `Add`,
   back: "Back",
 
+  no_permission: "You do not have permission to view this page.",
+  dont_have_permission: "You do not have permission to perform this action.",
+
   first_name: "First name",
   last_name: "Last name",
   full_name: "Full name",

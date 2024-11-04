@@ -1,5 +1,5 @@
 <template>
-    <div class="mt-20">
+    <div v-if="canView" class="mt-20">
         <el-breadcrumb separator="/">
             <el-breadcrumb-item :to="{ path: '/admin' }">dashboard</el-breadcrumb-item>
             <el-breadcrumb-item>
@@ -23,12 +23,21 @@
             </PaginationTable>
         </div>
     </div>
+    <div v-else class="mt-20">
+        <span>{{ $t('no_permission') }}</span>
+    </div>
 </template>
 
-<script setup>
+<script setup lang="ts">
 definePageMeta({
     layout: 'adminlayout'
 })
 import CourseService from '@/services/course';
+import { useOauthStore } from '@/stores/oauth';
+const oauthStore = useOauthStore();
+
+const canView = computed(() => {
+    return oauthStore.hasOneOfScopes(["admin:courses:view"]);
+});
 // import { utcToLocalDateTime } from '@/utils/time'
 </script>

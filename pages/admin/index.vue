@@ -1,6 +1,6 @@
 <template>
     <main class="pt-14 min-h-screen">
-        <div class="flex flex-col  items-start font-sans h-screen w-full mt-4">
+        <div v-if="canView" class="flex flex-col  items-start font-sans h-screen w-full mt-4">
             <!-- <p>Home</p> -->
             <section class="mb-6 flex items-center justify-between">
                 <div class="flex items-center justify-start"><span
@@ -107,6 +107,9 @@
                 </div>
             </section>
         </div>
+        <div v-else>
+            <span>{{ $t('no_permission') }}</span>
+        </div>
     </main>
 
 </template>
@@ -117,6 +120,12 @@ definePageMeta({
 import UserIcon from '@/assets/icons/users.svg'
 import SettingIcon from '@/assets/icons/settings.svg'
 import { ArrowUp, ArrowDown } from '@element-plus/icons-vue'
+import { useOauthStore } from '@/stores/oauth';
+const oauthStore = useOauthStore();
+
+const canView = computed(() => {
+    return oauthStore.hasOneOfScopes(["admin:students:view"]);
+});
 
 const length = 3;
 const items = ref([

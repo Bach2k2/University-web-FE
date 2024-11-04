@@ -70,6 +70,9 @@ import SubjectService from '@/services/subject'
 import { useSubjectsStore } from '@/stores/subject';
 import RoomService from '@/services/room'
 import { useRoomsStore } from '@/stores/room';
+import { useOauthStore } from '@/stores/oauth';
+const oauthStore = useOauthStore();
+
 const props = defineProps({
     defaultData: {
         type: Object,
@@ -83,11 +86,10 @@ const { t } = useI18n();
 const subjectStore = useSubjectsStore();
 const roomStore = useRoomsStore();
 const canEdit = computed(() => {
-    // return oauthStore.hasOneOfScopes(["admin:students:edit"]);
-    return true;
+    return oauthStore.hasOneOfScopes(["admin:courses:edit"]);
 });
 const canView = computed(() => {
-    return true;
+    return oauthStore.hasOneOfScopes(["admin:courses:view"]);
 });
 
 const fetchData = async () => {
