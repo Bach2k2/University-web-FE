@@ -20,7 +20,7 @@
                         <nav :class="{ hidden: !open }" id="navbarCollapse"
                             class="absolute right-4 top-full w-full max-w-[250px] rounded-lg bg-white dark:bg-dark-2 py-5 px-6 shadow lg:static lg:block lg:w-full lg:max-w-full lg:bg-transparent lg:shadow-none xl:ml-10 lg:dark:bg-transparent text-black">
                             <ul class="block lg:flex">
-                                <template v-for="(item, index) in navLinkItems" :key="index">
+                                <template v-for="(item, index) in filteredNavLinkItems" :key="index">
                                     <li>
                                         <a v-if="item.href" :href="item.href"
                                             class="mr-1 flex rounded-full border border-transparent py-[5px] px-[18px] text-base font-medium text-dark dark:text-white hover:border-primary hover:text-primary lg:inline-flex lg:text-white lg:hover:border-white lg:hover:text-white">
@@ -100,6 +100,17 @@ const navLinkItems = ref([
 ])
 
 
+// Computed property to filter nav items based on authentication status
+const filteredNavLinkItems = computed(() => {
+    console.log("authenticated",authenticated.value);
+    return navLinkItems.value.filter(item => {
+        // If user is authenticated, exclude the Login item
+        if (authenticated.value && item.text === 'Login') {
+            return false;
+        }
+        return true;
+    });
+});
 
 // Custom composition function to handle click outside
 const handleClickOutside = (event: MouseEvent) => {
