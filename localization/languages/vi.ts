@@ -17,6 +17,12 @@ const vi = {
 
   no_permission: "Bạn không có quyền xem trang này.",
   dont_have_permission: "Bạn không có quyền thực hiện hành động này.",
+  //Login page
+  signin: "Đăng nhập",
+  type_email_username: "Email",
+  type_password: "Mật khẩu",
+
+  dashboard: "Trang quản lý",
 
   first_name: "Tên",
   last_name: "Họ",
@@ -36,6 +42,7 @@ const vi = {
   location: "Vị trí",
 
   //Course:
+  courses: "Khóa học",
   course_info: "Thông tin khóa học",
   id: "Mã số",
   subject: "Môn học",
@@ -65,6 +72,7 @@ const vi = {
   major_details: "Chi tiết chuyên ngành",
   major_id: "Mã chuyên ngành",
   name: "Tên",
+
   department: "Khoa",
   duration: "Thời gian",
   description: "Mô tả",
@@ -92,23 +100,38 @@ const vi = {
 
   staff_room_info: "Thông tin phòng nhân viên",
   staff_room_details: "Chi tiết phòng nhân viên",
+  students: "Sinh viên",
   student_info: "Thông tin sinh viên",
   student_details: "Chi tiết sinh viên",
   student_id: "Mã sinh viên",
   subject_info: "Thông tin môn học",
   subject_details: "Chi tiết môn học",
   subject_id: "Mã môn học",
+  // Subject material
+  subject_materials: "Tài liệu môn học",
   subject_material_info: "Thông tin tài liệu môn học",
   subject_material_details: "Chi tiết tài liệu môn học",
   file_path: "Đường dẫn tập tin",
+  // Teacher
+  teachers :"Giảng viên",
   teacher_info: "Thông tin giảng viên",
   teacher_details: "Chi tiết giảng viên",
   teaching_assistant_info: "Thông tin trợ giảng",
   teaching_assistant_details: "Chi tiết trợ giảng",
+  teacher_types: "Loại hình gv",
+
+  // Documents
+  documents: "Tài liệu",
+  // Thesis
+  thesis: "Luận văn",
   thesis_info: "Thông tin luận văn",
   thesis_details: "Chi tiết luận văn",
   thesis_id: "Mã luận văn",
   author: "Tác giả",
   submission_date: "Ngày nộp",
+
+  // Department
+  departments: "Phòng ban",
+  departments_management: "Quản lý chi nhánh",
 };
 export default vi;

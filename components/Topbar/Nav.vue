@@ -9,9 +9,11 @@
 
     </div>
     <div class="flex flex-row items-center gap-2">
-      <SearchBar/>
+      <SearchBar />
       <CurrentUser v-if="authenticated" />
-      <LanguageSelector />
+      <div class="flex">
+        <LanguageSelector />
+      </div>
     </div>
   </div>
 </template>

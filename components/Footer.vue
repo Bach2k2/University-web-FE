@@ -1,5 +1,5 @@
 <template>
-<footer class="bg-black py-8">
+<footer class="bg-[#090E34] py-8 mt-2">
     <div class="container mx-auto px-4">
  
     <!-- Footer Content -->
@@ -7,7 +7,7 @@
         <!-- Logo and Description -->
         <div class="w-full md:w-1/3 mb-6 md:mb-0">
         <div class="mb-6">
-            <img src="https://i.ibb.co/QDy827D/ak-logo.png" alt="logo" class="w-48">
+           <MyUniversityLogo class="w-48"/>
         </div>
         <p class="text-gray-400">Lorem ipsum dolor sit amet, consec tetur adipisicing elit, sed do eiusmod tempor incididunt.</p>
         <div class="mt-4">
@@ -54,22 +54,22 @@
     </div>
 
     <!-- Copyright Section -->
-    <div class="bg-gray-900 py-4 text-gray-400">
-    <div class="container mx-auto px-4 flex flex-wrap justify-between">
-        <p class="w-full md:w-auto text-center md:text-left">&copy; 2024, All Right Reserved <a href="#" class="text-orange-500">Anup</a></p>
-        <ul class="w-full md:w-auto text-center md:text-right space-x-4">
-        <li class="inline-block"><a href="#" class="hover:text-orange-500">Home</a></li>
-        <li class="inline-block"><a href="#" class="hover:text-orange-500">Terms</a></li>
-        <li class="inline-block"><a href="#" class="hover:text-orange-500">Privacy</a></li>
-        <li class="inline-block"><a href="#" class="hover:text-orange-500">Contact</a></li>
-        </ul>
-    </div>
+    <div class="bg-gray-900 py-4 text-gray-300">
+        <div class="container mx-auto px-4 flex flex-wrap justify-between">
+            <p class="w-full md:w-auto text-center md:text-left text-gray-300">&copy; 2024, All Right Reserved <a href="#" class="text-orange-500">LiveALearn Team</a></p>
+            <ul class="w-full md:w-auto text-center md:text-right space-x-4">
+                <li class="inline-block"><a href="#" class="hover:text-orange-500">Home</a></li>
+                <li class="inline-block"><a href="#" class="hover:text-orange-500">Terms</a></li>
+                <li class="inline-block"><a href="#" class="hover:text-orange-500">Privacy</a></li>
+                <li class="inline-block"><a href="#" class="hover:text-orange-500">Contact</a></li>
+            </ul>
+        </div>
     </div>
 </footer>
 </template>
 
 <script setup>
-// No specific script needed in this case
+import MyUniversityLogo from '@/assets/icons/light_logo.svg'
 </script>
 
 <style scoped>

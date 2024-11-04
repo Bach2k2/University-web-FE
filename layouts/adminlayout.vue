@@ -2,11 +2,11 @@
   <div v-if="authenticated" class="flex flex-row min-h-screen">
     <TopbarNav />
 
-    <aside class="flex-none w-64 h-screen">
+    <aside class="flex-none w-64 h-screen text-white">
       <Sidebar class="flex-1 overflow-y-auto overflow-x-hidden aside-scrollbars dark:aside-scrollbars-[slate]">
         <template #header>
-          <p>One</p>
-          <h5>{{ $t('education_management') }}</h5>
+          <MyUniversityLogo />
+          <!-- <h5 >{{ $t('education_management') }}</h5> -->
         </template>
         <el-menu-item index="/admin">
           <IconDashboard color="white" style="cursor: pointer" class="el-icon" />
@@ -14,28 +14,50 @@
         </el-menu-item>
         <el-menu-item index="/admin/students">
           <IconStudent color="white" style="cursor: pointer" class="el-icon" />
-          <span class="text-white">{{ $t('student') }}</span>
+          <span class="text-white">{{ $t('students') }}</span>
         </el-menu-item>
         <el-menu-item index="/admin/courses">
           <IconDashboard color="white" style="cursor: pointer" class="el-icon" />
-          <span class="text-white">{{ $t('course') }}</span>
+          <span class="text-white">{{ $t('courses') }}</span>
         </el-menu-item>
-        <el-menu-item index="/admin/documents">
+        <el-sub-menu index="#">
+          <template #title>
+            <el-icon>
+              <Document />
+            </el-icon>
+            <span class="text-white"> {{ $t('documents') }}</span>
+          </template>
+
+          <el-menu-item index="/admin/documents/thesis">
+            <template #title class="text-white">{{ $t('thesis') }}</template>
+            <!-- <el-menu-item index="1-4-1">item one</el-menu-item> -->
+          </el-menu-item>
+          <el-menu-item index="/admin/documents/subject_materials">
+            <template #title class="text-white">{{ $t('subject_materials') }}</template>
+            <!-- <el-menu-item index="1-4-1">item one</el-menu-item> -->
+          </el-menu-item>
+        </el-sub-menu>
+
+
+        <el-menu-item index="/admin/teachers">
           <IconDashboard color="white" style="cursor: pointer" class="el-icon" />
-          <span class="text-white">{{ $t('document') }}</span>
+          <span class="text-white">{{ $t('teachers') }}</span>
         </el-menu-item>
         <el-sub-menu index="/admin/departments">
           <template #title>
-            <span class="text-white">{{ $t('department') }}</span>
+            <el-icon>
+              <OfficeBuilding />
+            </el-icon>
+            <span class="text-white">{{ $t('departments') }}</span>
           </template>
           <RestrictedView>
-            <el-menu-item index="/admin/department/teachers">{{ $t('teachers') }}</el-menu-item>
+            <el-menu-item index="/admin/departments/teachers">{{ $t('teachers') }}</el-menu-item>
           </RestrictedView>
-          <el-menu-item index="/admin/department/teachers">{{ $t('teachers') }}</el-menu-item>
-          <el-menu-item index="/admin/department/majors">
+          <!-- <el-menu-item index="/admin/departments/teachers">{{ $t('teachers') }}</el-menu-item> -->
+          <el-menu-item index="/admin/departments/majors">
             <IconMajor class="el-icon" /><span>{{ $t('majors') }}</span>
           </el-menu-item>
-          <el-menu-item index="/admin/department/teacher-types">{{ $t('teacher_types') }}</el-menu-item>
+          <el-menu-item index="/admin/departments/teacher-types">{{ $t('teacher_types') }}</el-menu-item>
         </el-sub-menu>
       </Sidebar>
       <a
@@ -65,6 +87,14 @@ import IconMajor from '~/assets/icons/majors.svg'
 import IconDashboard from '~/assets/icons/dashboard.svg';
 import IconStudent from '~/assets/icons/student_types.svg'
 import Sidebar from '@/components/Sidebar/index.vue'
+import MyUniversityLogo from '@/assets/icons/dark_logo.svg'
+import {
+  Document,
+  Menu as IconMenu,
+  Location,
+  Setting,
+  OfficeBuilding
+} from '@element-plus/icons-vue'
 const layoutAsidePadding = 'xl:pl-60'
 
 import { useOauthStore } from '@/stores/oauth';
@@ -83,3 +113,15 @@ onMounted(() => {
   // }
 })
 </script>
+<style lang="css" scoped>
+li .el-menu-item {
+  display: flex;
+  align-items: center;
+  color: white;
+  list-style: none;
+  cursor: pointer;
+  position: relative;
+  box-sizing: border-box;
+  white-space: nowrap;
+}
+</style>

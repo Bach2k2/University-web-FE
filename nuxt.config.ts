@@ -16,7 +16,6 @@ export default defineNuxtConfig({
   },
   css: ["~/assets/scss/element/index.scss", "~/assets/css/main.css"],
 
-  
   modules: [
     "@nuxtjs/i18n",
     "@pinia/nuxt",
@@ -81,7 +80,7 @@ export default defineNuxtConfig({
   },
 
   dayjs: {
-    plugins: ['customParseFormat', 'relativeTime', 'utc'],
+    plugins: ["customParseFormat", "relativeTime", "utc"],
   },
 
   vite: {
@@ -92,6 +91,9 @@ export default defineNuxtConfig({
         },
       },
     },
+    optimizeDeps: {
+      include: ["dayjs", "dayjs/plugin/*"],
+    },
     build: {
       manifest: "Frontend.manifest.json",
     },
@@ -99,5 +101,4 @@ export default defineNuxtConfig({
       include: ['dayjs', 'dayjs/plugin/*']
     },
   },
-
 });
