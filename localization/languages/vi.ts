@@ -35,11 +35,13 @@ const vi = {
 
   classroom_info: "Thông tin phòng học",
   classroom_details: "Chi tiết phòng học",
+  rooms: "Phòng học",
   room_id: "Mã phòng",
   title: "Tiêu đề",
   room_type: "Loại phòng",
   capacity: "Sức chứa",
   location: "Vị trí",
+  room_types: "Loại phòng",
 
   //Course:
   courses: "Khóa học",
@@ -50,6 +52,7 @@ const vi = {
   room: "Phòng",
   start_date: "Ngày bắt đầu",
   end_date: "Ngày kết thúc",
+  subjects: "Môn học",
 
   //Facility
   facility_info: "Facility Information",
@@ -133,5 +136,7 @@ const vi = {
   // Department
   departments: "Phòng ban",
   departments_management: "Quản lý chi nhánh",
+
+  course_management: "Quản lý chuyên môn",
 };
 export default vi;

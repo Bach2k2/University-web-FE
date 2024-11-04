@@ -13,7 +13,11 @@ export const useSubjectsStore = defineStore('subjects', {
     getters: {
         allSubjects: (state) => {
             return getCachedData(state.subjects);
-        }
+        },
+        subjectsCount(state) {
+            const studentsData = getCachedData(state.subjects);
+            return studentsData ? studentsData.length : 0;
+        },
     },
     actions: {
         setSubjects(subjects) {

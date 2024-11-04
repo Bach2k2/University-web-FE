@@ -14,7 +14,7 @@ const en = {
 
   email_phone_username: "Username",
   password: "Password",
-  
+
   no_permission: "You do not have permission to view this page.",
   dont_have_permission: "You do not have permission to perform this action.",
 
@@ -24,7 +24,7 @@ const en = {
   type_password: "Enter password",
 
   // Dashboard
-  dashboard:"Dashboard",
+  dashboard: "Dashboard",
   first_name: "First name",
   last_name: "Last name",
   full_name: "Full name",
@@ -37,10 +37,12 @@ const en = {
   //Room:
   classroom_info: "Classroom Information",
   classroom_details: "Room Details",
+  rooms: "Room",
   room_id: "Room ID",
   room_type: "Room Type",
   capacity: "Capacity",
   location: "Location",
+  room_types: "Room types",
 
   //Course
   courses: "Courses",
@@ -52,6 +54,7 @@ const en = {
   room: "Room",
   start_date: "Start Date",
   end_date: "End Date",
+  subjects: "Subjects",
 
   //Facility
   facility_info: "Facility Information",
@@ -98,7 +101,7 @@ const en = {
   staff_id: "Staff ID",
   staff_room_info: "Staff Room Information",
   staff_room_details: "Staff Room Details",
-  students:"Students",
+  students: "Students",
   student_info: "Student Information",
   student_details: "Student Details",
   student_id: "Student ID",
@@ -121,7 +124,7 @@ const en = {
   teacher_types: "Teacher types",
 
   // Documents
-  documents:"Documents",
+  documents: "Documents",
   thesis: "Thesis",
   thesis_info: "Thesis Information",
   thesis_details: "Thesis Details",
@@ -132,5 +135,7 @@ const en = {
   // Department
   departments: "Departments",
   departments_management: "Departments management",
+  
+  course_management: "Course management",
 };
 export default en;

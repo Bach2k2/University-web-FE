@@ -1,7 +1,6 @@
 <template>
   <div v-if="authenticated" class="flex flex-row min-h-screen">
     <TopbarNav />
-
     <aside class="flex-none w-64 h-screen text-white">
       <Sidebar class="flex-1 overflow-y-auto overflow-x-hidden aside-scrollbars dark:aside-scrollbars-[slate]">
         <template #header>
@@ -16,10 +15,24 @@
           <IconStudent color="white" style="cursor: pointer" class="el-icon" />
           <span class="text-white">{{ $t('students') }}</span>
         </el-menu-item>
-        <el-menu-item index="/admin/courses">
-          <IconDashboard color="white" style="cursor: pointer" class="el-icon" />
-          <span class="text-white">{{ $t('courses') }}</span>
-        </el-menu-item>
+        <el-sub-menu index="/admin/courses">
+          <template #title>
+            <IconCourse color="white" style="cursor: pointer" class="el-icon" />
+            <span class="text-white">{{ $t('course_management') }}</span>
+          </template>
+          <el-menu-item index="/admin/courses">
+            <template #title class="text-white">{{ $t('courses') }}</template>
+          </el-menu-item>
+          <el-menu-item index="/admin/courses/subjects">
+            <template #title class="text-white">{{ $t('subjects') }}</template>
+          </el-menu-item>
+          <el-menu-item index="/admin/courses/rooms">
+            <template #title class="text-white">{{ $t('rooms') }}</template>
+          </el-menu-item>
+          <el-menu-item index="/admin/courses/room-types">
+            <template #title class="text-white">{{ $t('room_types') }}</template>
+          </el-menu-item>
+        </el-sub-menu>
         <el-sub-menu index="#">
           <template #title>
             <el-icon>
@@ -37,12 +50,6 @@
             <!-- <el-menu-item index="1-4-1">item one</el-menu-item> -->
           </el-menu-item>
         </el-sub-menu>
-
-
-        <el-menu-item index="/admin/teachers">
-          <IconDashboard color="white" style="cursor: pointer" class="el-icon" />
-          <span class="text-white">{{ $t('teachers') }}</span>
-        </el-menu-item>
         <el-sub-menu index="/admin/departments">
           <template #title>
             <el-icon>
@@ -51,13 +58,16 @@
             <span class="text-white">{{ $t('departments') }}</span>
           </template>
           <RestrictedView>
-            <el-menu-item index="/admin/departments/teachers">{{ $t('teachers') }}</el-menu-item>
+            <el-menu-item index="/admin/departments/teachers">
+              <IconTeacher color="white" style="cursor: pointer" class="el-icon" /><span>{{ $t('teachers') }}</span>
+            </el-menu-item>
           </RestrictedView>
-          <!-- <el-menu-item index="/admin/departments/teachers">{{ $t('teachers') }}</el-menu-item> -->
           <el-menu-item index="/admin/departments/majors">
             <IconMajor class="el-icon" /><span>{{ $t('majors') }}</span>
           </el-menu-item>
-          <el-menu-item index="/admin/departments/teacher-types">{{ $t('teacher_types') }}</el-menu-item>
+          <el-menu-item index="/admin/departments/teacher-types">
+            <IconMajor class="el-icon" /><span>{{ $t('teacher_types') }}</span>
+          </el-menu-item>
         </el-sub-menu>
       </Sidebar>
       <a
@@ -73,11 +83,12 @@
     <main class="flex-1 p-4 bg-gray-50 mt-16">
       <slot />
     </main>
+ 
   </div>
   <div v-else>
-    <NavBar/>
+    <NavBar />
     <AuthenticationLogin />
-    <Footer/>
+    <Footer />
   </div>
 </template>
 
@@ -85,7 +96,9 @@
 import { ref } from 'vue'
 import IconMajor from '~/assets/icons/majors.svg'
 import IconDashboard from '~/assets/icons/dashboard.svg';
-import IconStudent from '~/assets/icons/student_types.svg'
+import IconStudent from '~/assets/icons/students.svg'
+import IconTeacher from '~/assets/icons/teachers.svg'
+import IconCourse from '~/assets/icons/courses.svg'
 import Sidebar from '@/components/Sidebar/index.vue'
 import MyUniversityLogo from '@/assets/icons/dark_logo.svg'
 import {

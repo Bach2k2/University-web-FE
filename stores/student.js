@@ -1,23 +1,27 @@
-import { defineStore } from 'pinia';
-import { getCachedData, createCachedEntry } from '@/utils/caching';
+import { defineStore } from "pinia";
+import { getCachedData, createCachedEntry } from "@/utils/caching";
 
-export const useStudentsStore = defineStore('students', {
-    state: () => ({
-        students: {
-            ...createCachedEntry([], 0)
-        },
-    }),
-    persist: {
-        storage: persistedState.localStorage,
+export const useStudentsStore = defineStore("students", {
+  state: () => ({
+    students: {
+      ...createCachedEntry([], 0),
     },
-    getters: {
-        allStudents: (state) => {
-            return getCachedData(state.students);
-        }
+  }),
+  persist: {
+    storage: persistedState.localStorage,
+  },
+  getters: {
+    allStudents: (state) => {
+      return getCachedData(state.students);
     },
-    actions: {
-        setStudents(students) {
-            this.students = students;
-        }
+    studentsCount(state) {
+      const studentsData = getCachedData(state.students);
+      return studentsData ? studentsData.length : 0;
     },
-})
+  },
+  actions: {
+    setStudents(students) {
+      this.students = students;
+    },
+  },
+});
