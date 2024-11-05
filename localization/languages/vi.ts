@@ -1,4 +1,8 @@
 const vi = {
+  //Homepage
+  upcoming_events: "Sự kiện sắp tới",
+  view_all_events: "Hiển thị tất cả sự kiện",
+  view_all_news: "Hiển thị tất cả tin tức",
   pick_a_language: "Chọn ngôn ngữ",
   forgot_password: "Quên mật khẩu?",
   change_password: "Thay đổi password",
@@ -17,6 +21,8 @@ const vi = {
 
   no_permission: "Bạn không có quyền xem trang này.",
   dont_have_permission: "Bạn không có quyền thực hiện hành động này.",
+  validate_error_required: "Trường này là bắt buộc.",
+  validate_error_email_format: "Vui lòng nhập một địa chỉ email hợp lệ.",
   //Login page
   signin: "Đăng nhập",
   type_email_username: "Email",
@@ -116,7 +122,7 @@ const vi = {
   subject_material_details: "Chi tiết tài liệu môn học",
   file_path: "Đường dẫn tập tin",
   // Teacher
-  teachers :"Giảng viên",
+  teachers: "Giảng viên",
   teacher_info: "Thông tin giảng viên",
   teacher_details: "Chi tiết giảng viên",
   teaching_assistant_info: "Thông tin trợ giảng",

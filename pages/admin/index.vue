@@ -116,7 +116,6 @@
                 </div>
             </section>
 
-           
         </div>
         <div v-else>
             <span>{{ $t('no_permission') }}</span>
