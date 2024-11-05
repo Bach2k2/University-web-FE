@@ -1,47 +1,39 @@
 <template>
-    <div class="block box-border mx-auto w-full px-0 min-h-[615px] bg-[#f5f5f5]">
-        <div class="box-content md:w-full sm:w-full">
-            <div class="setionarea__component__wrapper relative my-4 text-[#000054]">
-                <div class="setionarea__component__content w-[84%] p-8">
-
-                    <h2 class="text-3xl font-semibold">Tìm hiểu về các chương trình học tại
-                        RMIT</h2>
-                    <div class="description ">RMIT mang đến cho bạn nhiều lựa chọn đa
-                        dạng về chương trình liên thông, cử nhân và thạc sĩ tùy theo khả năng, sở thích cũng như định
-                        hướng tương lai của bản thân. Hãy chọn cho mình con đường phù hợp nhất!
+    <div class="block box-border mx-auto w-full min-h-[615px] bg-[#f5f5f5] p-8">
+        <div class="box-content w-full">
+            <div class="relative my-4 text-[#000054]">
+                <div class="w-[84%] p-8 mx-auto">
+                    <h2 class="text-3xl font-semibold">Tìm hiểu về các chương trình học tại Live&Learn</h2>
+                    <div class="description text-xl font-medium">
+                        Live&Learn mang đến cho bạn nhiều lựa chọn đa dạng về chương trình liên thông, cử nhân và thạc sĩ tùy theo khả năng, sở thích cũng như định hướng tương lai của bản thân. Hãy chọn cho mình con đường phù hợp nhất!
                     </div>
                 </div>
             </div>
+
             <div class="grid grid-cols-12 gap-4">
-                <!-- one column starts -->
-                <div v-for="option in options" class="col-span-4 sm:col-span-12 md:col-span-4 gap-4">
-                    <div class="flex flex-col h-[200px] object-cover w-full mt-2 float-left relative">
+                <!-- Card starts -->
+                <div v-for="option in options" :key="option.name" class="col-span-4 sm:col-span-12 md:col-span-4 gap-4">
+                    <div class="flex flex-col object-cover w-full mt-2 relative">
                         <picture>
                             <source :srcset="option.image">
-                            <img :src="option.image">
+                            <img :src="option.image" class="w-full h-[250px] md:h-[300px] object-cover rounded-lg shadow-lg">
                         </picture>
-                        <div class="-mt-8 mx-4 border border-solid border-white bg-white overflow-hidden md:w-auto min-h-32 px-4 py-6">
+                        <div class="-mt-8 mx-4 border border-solid border-white bg-white overflow-hidden md:w-auto min-h-32 px-4 py-6 rounded-lg shadow-md">
                             <h4 class="text-xl text-header leading-6">{{ option.name }}</h4>
                             <ul>
-                                <li v-for="sub_option in option.features" class="col-md-12 col-lg-12">
-                                    <div class="columnlinklist__content--chevron">
-                                        <el-icon>
-                                            <ArrowRight color="red"/>
-                                        </el-icon>
-                                    </div>
-                                    <div class="columnlinklist__content--linkarea">
-                                        <NuxtLink class="text-base text-black"
-                                            :to="sub_option.link">
-                                            {{ sub_option.name }}
-                                        </NuxtLink>
-                                    </div>
+                                <li v-for="sub_option in option.features" :key="sub_option.name" class="flex items-center my-2">
+                                    <el-icon>
+                                        <ArrowRight color="red"/>
+                                    </el-icon>
+                                    <NuxtLink :to="sub_option.link" class="text-base text-black ml-2">
+                                        {{ sub_option.name }}
+                                    </NuxtLink>
                                 </li>
                             </ul>
                         </div>
                     </div>
-                   
                 </div>
-              
+                <!-- Card ends -->
             </div>
         </div>
     </div>

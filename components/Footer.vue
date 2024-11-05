@@ -9,9 +9,9 @@
         <div class="mb-6">
            <MyUniversityLogo class="w-48"/>
         </div>
-        <p class="text-gray-400">Lorem ipsum dolor sit amet, consec tetur adipisicing elit, sed do eiusmod tempor incididunt.</p>
+        <p class="text-gray-400">Trường học cam kết mang đến dịch vụ học tập tốt nhất cho sinh viên</p>
         <div class="mt-4">
-            <span class="font-semibold text-lg">Follow us</span>
+            <span class="font-semibold text-lg text-white">Follow us</span>
             <div class="flex space-x-4 mt-2">
             <a href="#" class="bg-blue-600 rounded-full p-2 text-white">
                 <i class="fab fa-facebook-f"></i>
@@ -28,7 +28,7 @@
 
         <!-- Useful Links -->
         <div class="w-full md:w-1/3 mb-6 md:mb-0">
-        <h3 class="font-semibold text-xl mb-6">Useful Links</h3>
+        <h3 class="font-semibold text-xl mb-6 text-white">Useful Links</h3>
         <ul class="flex flex-wrap">
             <li class="w-1/2 mb-3"><a href="#" class="text-gray-400 hover:text-orange-500">Home</a></li>
             <li class="w-1/2 mb-3"><a href="#" class="text-gray-400 hover:text-orange-500">About</a></li>
@@ -41,7 +41,7 @@
 
         <!-- Subscribe Form -->
         <div class="w-full md:w-1/3">
-        <h3 class="font-semibold text-xl mb-6">Subscribe</h3>
+        <h3 class="font-semibold text-xl mb-6 text-white">Subscribe</h3>
         <p class="text-gray-400 mb-6">Don’t miss to subscribe to our new feeds, kindly fill the form below.</p>
         <form class="relative">
             <input type="text" placeholder="Email Address" class="w-full p-3 bg-gray-800 text-white border-none outline-none">

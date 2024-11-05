@@ -39,16 +39,16 @@ const searchQuery = ref('');
 const searchOptions = ref([
     'Học bổng',
     'Cơ hội trải nghiệm và việc làm',
-    'Nhập học RMIT'
+    'Nhập học Live&Learn'
 ]);
 
 const slides = ref(
     [
-        { title: 'Khám phá ngay chuỗi hội thảo tại 10 tỉnh thành. ', description: 'Chuỗi hội thảo: Hành trình ra thế giới từ Đại học RMIT ', href: 'javascript:void(0)', image: 'https://picsum.photos/600/600?random=1' },
-        { title: 'Khám phá ngay chuỗi hội thảo RMIT tại 10 tỉnh thành. ', description: 'Chuỗi hội thảo: Hành trình ra thế giới từ Đại học RMIT ', href: 'javascript:void(0)', image: 'https://picsum.photos/600/600?random=2' },
-        { title: 'Khám phá ngay chuỗi hội thảo RMIT tại 10 tỉnh thành. ', description: 'Chuỗi hội thảo: Hành trình ra thế giới từ Đại học RMIT ', href: 'javascript:void(0)', image: 'https://picsum.photos/600/600?random=3' },
-        { title: 'Tìm hiểu 18 chương trình cử nhân và khám phá lộ trình học tập toàn cầu. ', description: 'Chuỗi hội thảo: Hành trình ra thế giới từ Đại học RMIT ', href: 'javascript:void(0)', image: 'https://picsum.photos/600/600?random=4' },
-        { title: 'Tuần lễ Định hướng - Học kỳ 3, 2024. ', description: 'Chuỗi hội thảo: Hành trình ra thế giới từ Đại học RMIT ', href: 'javascript:void(0)', image: 'https://picsum.photos/600/600?random=5' },
+        { title: 'Khám phá ngay chuỗi hội thảo tại 10 tỉnh thành. ', description: 'Chuỗi hội thảo: Hành trình ra thế giới từ Đại học Live&Learn ', href: 'javascript:void(0)', image: 'https://picsum.photos/600/600?random=1' },
+        { title: 'Khám phá ngay chuỗi hội thảo Live&Learn tại 10 tỉnh thành. ', description: 'Chuỗi hội thảo: Hành trình ra thế giới từ Đại học Live&Learn ', href: 'javascript:void(0)', image: 'https://picsum.photos/600/600?random=2' },
+        { title: 'Khám phá ngay chuỗi hội thảo Live&Learn tại 10 tỉnh thành. ', description: 'Chuỗi hội thảo: Hành trình ra thế giới từ Đại học Live&Learn ', href: 'javascript:void(0)', image: 'https://picsum.photos/600/600?random=3' },
+        { title: 'Tìm hiểu 18 chương trình cử nhân và khám phá lộ trình học tập toàn cầu. ', description: 'Chuỗi hội thảo: Hành trình ra thế giới từ Đại học Live&Learn ', href: 'javascript:void(0)', image: 'https://picsum.photos/600/600?random=4' },
+        { title: 'Tuần lễ Định hướng - Học kỳ 3, 2024. ', description: 'Chuỗi hội thảo: Hành trình ra thế giới từ Đại học Live&Learn ', href: 'javascript:void(0)', image: 'https://picsum.photos/600/600?random=5' },
     ]
 )
 

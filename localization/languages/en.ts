@@ -1,4 +1,8 @@
 const en = {
+  //Homepage
+  upcoming_events: "Upcoming events",
+  view_all_events: "View all events",
+  view_all_news: "View all news",
   pick_a_language: "Pick a language",
   forgot_password: "Forgot password?",
   change_password: "Change password",
@@ -17,6 +21,8 @@ const en = {
 
   no_permission: "You do not have permission to view this page.",
   dont_have_permission: "You do not have permission to perform this action.",
+  validate_error_required: "This field is required.",
+  validate_error_email_format: "Please enter a valid email address.",
 
   //Login page
   signin: "Sign in",
@@ -135,7 +141,7 @@ const en = {
   // Department
   departments: "Departments",
   departments_management: "Departments management",
-  
+
   course_management: "Course management",
 };
 export default en;

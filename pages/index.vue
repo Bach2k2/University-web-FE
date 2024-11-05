@@ -1,8 +1,9 @@
 <template>
-  <HomepageHeroSection/>
+  <HomepageHeroSection />
   <HomepageFeatureSection />
-  <HomepageNewsPage/>
-  <HomepageEvent/>
+  <HomepageNewsPage />
+  <HomepageEvent />
+
 </template>
 <script lang="ts" setup>
 definePageMeta({
