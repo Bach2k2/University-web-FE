@@ -1,18 +1,23 @@
 <template>
-    <div class="flex flex-col items-center">
+    <div class="flex flex-col items-center w-[80%]">
         <p v-if="error" class="self-center text-red-800">{{ error }}</p>
-        <div class="flex flex-row self-end gap-2 my-2">
+      
+        <div class="flex flex-row w-full self-end gap-2 my-2 items-center">
+            <slot name="append"></slot>
             <el-input v-if="searchable" v-model="keyword" style="max-width: 500px" :placeholder="$t('Keyword')">
                 <template #append>
                     <el-button :icon="Search" />
                 </template>
             </el-input>
-            <el-button v-if="allowExportToExcel" @click="exportToExcel">{{ $t("to_excel") }}</el-button>
-            <el-button v-if="allowExportToJson" @click="exportToJson">{{ $t("to_json") }}</el-button>
+            
+            <el-button  :icon="Excel" v-if="allowExportToExcel" @click="exportToExcel">{{ $t("to_excel") }}</el-button>
+            <el-button :icon="Json" v-if="allowExportToJson" @click="exportToJson">{{ $t("to_json") }}</el-button>
             <el-button v-if="selectedItems && selectedItems.length > 0" :icon="Delete" @click="onMultipleDelete()">
                 Delete
             </el-button>
         </div>
+        <slot name="more_action"></slot>
+        
         <el-table v-loading="loading" :data="data.results" stripe border style="width: 100%"
             @selection-change="onSelectionChange" @row-click="onRowClick">
             <el-table-column v-if="multipleSelect" type="selection" width="55" />
@@ -77,6 +82,8 @@
 import BaseService from "@/services/base";
 import { Plus, Delete, Edit, Search } from '@element-plus/icons-vue';
 import { diff } from '@/utils/obj';
+import Excel from "@/assets/icons/excel.svg";
+import Json from "@/assets/icons/json.svg";
 import { toExcel } from '@/exporters/xls/xlsx';
 import { toJson } from '@/exporters/json/json';
 import { getErrorMessage } from '@/utils/error';
@@ -101,6 +108,7 @@ const props = defineProps<{
     approvalButtons?: Boolean;
     cancelButton?: Boolean;
     filter_by?: String;
+    customFetchData?:Function;
 }>();
 const { t } = useI18n();
 const route = useRoute();
@@ -240,13 +248,39 @@ const multipleDelete = () => {
 const cancelMultipleDeleting = () => {
     confirmMultipleDeleteDialog.value = false;
 };
-
 const fetchData = async () => {
-    const { page_size } = query.value
+    const { page_size } = query.value;
     loading.value = true;
     error.value = null;
-    props.service.gets(query.value)
-        .then((response: any) => {
+
+    try {
+        // Check if a custom fetch function is provided
+        if (typeof props.customFetchData === 'function') {
+            // Call customFetchData and await its response
+            const response = await props.customFetchData(query.value);
+            if (page_size) {
+                // If paginated, destructure response into pagination data
+                const { page, num_pages, count, results } = response;
+                data.value = {
+                    ...data.value,
+                    page,
+                    num_pages,
+                    count,
+                    results
+                };
+                console.log(1);
+                
+            } else {
+                // Otherwise, just set results
+                data.value = {
+                    ...data.value,
+                    results: response
+                };
+                console.log(2);
+            }
+        } else {
+            // Fallback to the default service fetch if customFetchData is not provided
+            const response = await props.service.gets(query.value);
             if (page_size) {
                 const { page, num_pages, count, results } = response;
                 data.value = {
@@ -255,22 +289,23 @@ const fetchData = async () => {
                     num_pages,
                     count,
                     results
-                }
+                };
+                console.log(3);
             } else {
                 data.value = {
                     ...data.value,
                     results: response
-                }
+                };
+                console.log(4);
             }
-        })
-        .catch((e) => {
-            error.value = getErrorMessage(e, e.statusCode ? t('an_error_occurred') : t('connection_corrupted'));
-        })
-        .finally(() => {
-            loading.value = false;
-        });
+        }
+    } catch (e) {
+        // Set error if there's an issue in the fetching process
+        error.value = getErrorMessage(e, e.statusCode ? t('an_error_occurred') : t('connection_corrupted'));
+    } finally {
+        loading.value = false;
+    }
 };
-
 watch(tokenInfo, () => {
     fetchData();
 });
@@ -328,6 +363,7 @@ table.el-table__header {
 /* Apply background color to individual header cells */
 .el-table th.el-table__cell {
     @apply bg-primary;
-    color: white; /* Optional: set text color */
+    color: white;
+    /* Optional: set text color */
 }
 </style>

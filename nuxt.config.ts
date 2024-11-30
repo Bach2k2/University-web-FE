@@ -10,7 +10,6 @@ export default defineNuxtConfig({
 
   runtimeConfig: {
     public: {
-      // apiBase: "http://localhost:80/api/",
       apiBase: process.env.API_BASE,
     },
   },
@@ -96,9 +95,6 @@ export default defineNuxtConfig({
     },
     build: {
       manifest: "Frontend.manifest.json",
-    },
-    optimizeDeps: {
-      include: ['dayjs', 'dayjs/plugin/*']
     },
   },
 });

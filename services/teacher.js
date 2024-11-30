@@ -20,6 +20,17 @@ class TeacherService extends BaseService {
       }
     }     
   }
+  async fetchDataWithFilters({ page, pageSize, majorIds, teacherTypeIds, searchQuery }) {
+    const params = {
+      page,
+      pageSize,
+      major_ids: majorIds?.join(","),
+      teacher_type_ids: teacherTypeIds?.join(","),
+      search: searchQuery || "",
+    };
+    const response = await this.gets({ params }); 
+    return response;
+  }
 }
 
 export default new TeacherService();

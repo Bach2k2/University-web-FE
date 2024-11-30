@@ -1,7 +1,6 @@
 <template>
     <div class="container-login flex bg-slate-100 rounded min-h-screen justify-center items-center">
         <div class="wrap-login mt-2">
-
             <div class="mt-5 mb-10">
                 <div class="lg:text-l text-center font-bold">
                     <NuxtLink to="/">
@@ -9,24 +8,27 @@
                     </NuxtLink>
                 </div>
             </div>
+
             <el-form ref="formRef" :model="formData" :rules="rules">
-                <span class="text-primary">{{error}}</span>
-                <div class="mt-2">
-                    <el-form-item class="validate-input" prop="email">
-                        <el-input class="input" type="text" :placeholder="$t('email_phone_username')"
-                            v-model="formData.email" />
-                    </el-form-item>
-                    <el-form-item prop="password">
-                        <el-input class="input" type="password" :placeholder="$t('password')"
-                            v-model="formData.password" show-password />
-                    </el-form-item>
-                    <NuxtLink to="/forgot-password" class="text-primary">{{ $t('forgot_password') }}</NuxtLink>
-                </div>
-                <div class="mt-2 flex flex-row items-center justify-center self-center m-0 p-0">
-                    <el-button class="py-2 px-4 login-form-btn items-center" @click="login()">
-                        {{ $t('signin') }}
-                    </el-button>
-                </div>
+                <span v-if="error" class="justify-center text-primary text-center mb-3">{{ error }}</span>
+                <el-loading :loading="loading" class="loading-indicator"> <!-- Loading Indicator -->
+                    <div class="mt-2">
+                        <el-form-item class="validate-input" prop="email">
+                            <el-input class="input" type="text" :placeholder="$t('email_phone_username')"
+                                v-model="formData.email" />
+                        </el-form-item>
+                        <el-form-item prop="password">
+                            <el-input class="input" type="password" :placeholder="$t('password')"
+                                v-model="formData.password" show-password />
+                        </el-form-item>
+                        <NuxtLink to="/forgot-password" class="text-primary">{{ $t('forgot_password') }}</NuxtLink>
+                    </div>
+                    <div class="mt-2 flex flex-row items-center justify-center self-center m-0 p-0">
+                        <el-button class="py-2 px-4 login-form-btn items-center" @click="login()">
+                            {{ $t('signin') }}
+                        </el-button>
+                    </div>
+                </el-loading>
             </el-form>
             <div class="text-center copy-right-text">Copyright © 2024 Live&Learn Team</div>
         </div>
@@ -49,9 +51,9 @@ useHead({
     title: 'Login'
 })
 const { t } = useI18n();
-const loading = ref(false);
-const error = ref(null);
-const authError = ref('')
+const loading = ref(false); // Loading state
+const error = ref(null); // Error message state
+const authError = ref('');
 const store = useOauthStore();
 const formRef = ref(null);
 const formData = ref({
@@ -68,22 +70,25 @@ const login = async () => {
             return;
         }
         let { email: username, password } = formData.value;
-        const { redirectTo } = props
+        const { redirectTo } = props;
         store.setFirstLogin(false);
         error.value = null;
-        OAuthService.login({ username, password })
-            .then(() => {
-                if (!!redirectTo && redirectTo.length > 0) {
-                    navigateTo(redirectTo);
-                }
-            })
-            .catch(e => {
-                console.warn(e);
-                error.value = e.error;
-            })
-    });
+        loading.value = true;  // Set loading to true before starting login
 
+        try {
+            await OAuthService.login({ username, password });
+            if (!!redirectTo && redirectTo.length > 0) {
+                navigateTo(redirectTo);
+            }
+        } catch (e) {
+            console.warn(e);
+            error.value = e.error;  // Set error message from response
+        } finally {
+            loading.value = false; // Set loading to false after login attempt
+        }
+    });
 }
+
 const rules = {
     email: [
         { required: true, message: t('validate_error_required'), trigger: 'blur' },

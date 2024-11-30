@@ -40,6 +40,11 @@ const en = {
   academic_title: "Academic Title",
   biography: "Biography",
 
+  //Table:
+  fetch_data: "Fetch data",
+  to_excel: "To Excel",
+  to_json: "To Json",
+
   //Room:
   classroom_info: "Classroom Information",
   classroom_details: "Room Details",
@@ -82,6 +87,7 @@ const en = {
   major_details: "Major Details",
   major_id: "Major ID",
   name: "Name",
+  department_id: "Department ID",
   department: "Department",
   duration: "Duration",
   description: "Description",
