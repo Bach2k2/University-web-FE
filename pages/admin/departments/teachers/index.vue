@@ -15,9 +15,9 @@
                 :custom-fetch-data="customFetchData">
                 <template #append>
                     <label>{{ $t('department')+':' }}</label>
-                    <el-select v-model="selectedMajor" multiple style="width: 200px; max-width: 500px" collapse-tags>
-                        <el-option v-for="major in majorStore.allMajors.data" :key="major.id" :value="major.id"
-                            :label="major.name">
+                    <el-select v-model="selectedDepartment" multiple style="width: 200px; max-width: 500px" collapse-tags>
+                        <el-option v-for="department in departmentStore.allDepartments" :key="department.id" :value="department.id"
+                            :label="department.name">
                         </el-option>
                     </el-select>
                 </template>
@@ -64,15 +64,16 @@ definePageMeta({
     layout: 'adminlayout'
 })
 import TeacherService from '@/services/teacher';
-import MajorService from '@/services/major'
+import DepartmentService from '@/services/department'
+
 import TeacherTypeService from '@/services/teacher_type'
 import { utcToLocalDateTime } from '@/utils/time'
 import UserService from '@/services/user';
-import { useMajorsStore } from '~/stores/majors';
+import { useDepartmentsStore } from "~/stores/departments";
 import { useTeacherTypesStore } from '~/stores/teacher_types';
 
-const selectedMajor = ref(null)
-const majorStore = useMajorsStore();
+const selectedDepartment = ref(null)
+const departmentStore = useDepartmentsStore();
 
 const selectedTeacherType = ref(null)
 const teacherTypesStore = useTeacherTypesStore();
@@ -84,7 +85,7 @@ const fetchData = () => {
 
 const customFetchData = async (pagination, searchQuery) => {
     const filterOptions = {
-        majorIds: selectedMajor.value,
+        departmentIds: selectedDepartment.value,
         teacherTypeIds: selectedTeacherType.value,
     };
     return TeacherService.fetchDataWithFilters({ ...pagination, ...filterOptions, searchQuery });
@@ -93,9 +94,9 @@ const customFetchData = async (pagination, searchQuery) => {
 
 onMounted(() => {
     fetchData();
-    MajorService.fetch(true)
+    DepartmentService.fetch(true)
     TeacherTypeService.fetch(true)
-    console.log('majors:', majorStore.allMajors);
+    console.log('departments:', departmentStore.allDepartments);
     console.log('teacher_types:', teacherTypesStore.allTeacherTypes);
 })
 </script>

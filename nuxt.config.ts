@@ -10,7 +10,8 @@ export default defineNuxtConfig({
 
   runtimeConfig: {
     public: {
-      apiBase: process.env.API_BASE,
+      apiBase:'http://localhost:80/api/'
+      // apiBase: process.env.API_BASE,
     },
   },
   css: ["~/assets/scss/element/index.scss", "~/assets/css/main.css"],

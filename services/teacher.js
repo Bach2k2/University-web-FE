@@ -1,14 +1,14 @@
 import BaseService from "./base";
-import { shouldFetch, createCachedEntry } from '@/utils/caching';
+import { shouldFetch, createCachedEntry } from "@/utils/caching";
 
 class TeacherService extends BaseService {
   get entity() {
     return "department/v1/teachers";
   }
 
-  async fetch(force=false) {
+  async fetch(force = false) {
     const store = useTeachersStore();
-    if(force || shouldFetch(store.teachers)) {
+    if (force || shouldFetch(store.teachers)) {
       store.setTeachers({ ...store.teachers, fetching: true });
       try {
         const response = await this.gets();
@@ -18,17 +18,25 @@ class TeacherService extends BaseService {
         store.setTeachers({ ...store.teachers, fetching: false });
         throw error;
       }
-    }     
+    }
   }
-  async fetchDataWithFilters({ page, pageSize, majorIds, teacherTypeIds, searchQuery }) {
+  async fetchDataWithFilters({
+    page,
+    pageSize,
+    departmentIds,
+    teacherTypeIds,
+    searchQuery,
+  }) {
     const params = {
-      page,
-      pageSize,
-      major_ids: majorIds?.join(","),
-      teacher_type_ids: teacherTypeIds?.join(","),
+      page: page ?? 1,
+      pageSize: pageSize ?? 10,
+      department_ids: departmentIds?.length ? departmentIds.join(",") : "",
+      teacher_type_ids: teacherTypeIds?.length
+        ? teacherTypeIds.join(",")
+        : "",
       search: searchQuery || "",
     };
-    const response = await this.gets({ params }); 
+    const response = await this.gets(params);
     return response;
   }
 }
