@@ -28,7 +28,13 @@ const vi = {
   type_email_username: "Email",
   type_password: "Mật khẩu",
 
+  //Dashboard
   dashboard: "Trang quản lý",
+
+  //Table
+  fetch_data:"Lấy dữ liệu",
+  to_excel: "Xuất sang Excel",
+  to_json: "Xuất sang Json",
 
   first_name: "Tên",
   last_name: "Họ",
@@ -140,6 +146,7 @@ const vi = {
   submission_date: "Ngày nộp",
 
   // Department
+  department_id: "Mã ngành",
   departments: "Phòng ban",
   departments_management: "Quản lý chi nhánh",
 

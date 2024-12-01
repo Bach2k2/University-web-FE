@@ -1,3 +1,4 @@
+import { useTeacherTypesStore } from "~/stores/teacher_types";
 import BaseService from "./base";
 import { shouldFetch, createCachedEntry } from '@/utils/caching';
 
@@ -7,15 +8,16 @@ class TeacherTypeService extends BaseService {
   }
 
   async fetch(force=false) {
-    const store = usePlansStore();
-    if(force || shouldFetch(store.plans)) {
-      store.setPlans({ ...store.plans, fetching: true });
+    const store = useTeacherTypesStore();
+    if(force || shouldFetch(store.teacher_types)) {
+      store.setTeacherTypes({ ...store.teacher_types, fetching: true });
       try {
         const response = await this.gets();
-        const plans = createCachedEntry(response);
-        store.setPlans(plans);
+        console.log(response);
+        const teacher_types = createCachedEntry(response);
+        store.setTeacherTypes(teacher_types);
       } catch (error) {
-        store.setPlans({ ...store.plans, fetching: false });
+        store.setTeacherTypes({ ...store.teacher_types, fetching: false });
         throw error;
       }
     }     
